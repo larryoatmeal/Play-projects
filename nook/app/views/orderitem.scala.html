@@ -1,0 +1,22 @@
+@(orderForm: Form[AnOrder],pokeItemList: List[PokeItemModel])
+
+@import helper._
+
+@main("Order Form"){
+	
+	<h1>Order Item</h1>
+    <!--Fires HTML in route -->
+    @form(routes.PokeItemController.receipt) {
+        <!--Let what user inputed equal itemName defined in the orderForm-->
+        <!-- Must match field in Form-->
+        @{val itemStringNames = for{pokeItem <- pokeItemList} yield (pokeItem.name)
+        select(orderForm("Select"), options(itemStringNames))}
+
+        @inputText(orderForm("Quantity"))
+
+
+        <input type="submit" value="Buy">
+        
+    }
+    
+}

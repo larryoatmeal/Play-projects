@@ -1,0 +1,18 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.MainController.home
+
+# Other pages
+GET		/inventory					controllers.PokeItemController.inventory
+GET		/inventory/:itemName		controllers.PokeItemController.itemDetails(itemName: String)
+GET 	/order						controllers.PokeItemController.order
+POST	/receipt					controllers.PokeItemController.receipt
+GET		/checkout					controllers.PokeItemController.checkout
+GET		/request					controllers.PokeItemController.request
+POST	/checkoutconfirmation		controllers.PokeItemController.addItem
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)

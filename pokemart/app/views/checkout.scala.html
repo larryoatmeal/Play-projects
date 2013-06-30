@@ -1,0 +1,17 @@
+@(checkoutList: List[AnOrder])
+
+@main("Checkout"){
+	<h1>Your purchases</h1>
+
+<p>
+	<dl>
+	@for(order<- checkoutList){
+	<dt>
+	@order.Select </dt>
+	<dd>Quantity: @order.Quantity</dd>
+
+}
+</dl>
+</p>
+
+}

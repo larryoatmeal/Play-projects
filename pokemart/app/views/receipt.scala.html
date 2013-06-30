@@ -1,0 +1,19 @@
+
+@(item: PokeItemModel, quantity: Int)
+
+
+@main("Receipt"){
+	<h1>You bought <FONT COLOR="#A80000">@item.name</FONT></h1>
+
+
+	<p>Unit price: $@item.price<br>
+		Quantity purchased: $@quantity<br>
+		Amount paid: $@(quantity * item.price)<br><br>
+		<a href="/">Home</a>
+
+
+	</p>
+
+
+
+}

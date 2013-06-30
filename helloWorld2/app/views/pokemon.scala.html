@@ -1,0 +1,19 @@
+@(pokemon: Pokemon)
+
+@main("Pokedex"){
+	<h1>Pokedex</h1>
+	<p>To use Pokedex, entire # in URL after pokemon/
+		<br>
+		<a href = "http://localhost:9000">Main menu</a>
+	</p>
+	<p>Pokemon of the day: <br>
+		@pokemon.name<br>
+		@pokemon.number<br>
+		@pokemon.attribute
+	</p>
+
+
+
+
+
+}

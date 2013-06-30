@@ -1,0 +1,17 @@
+@(requestForm: Form[PokeItemModel])
+@import helper._
+
+@main("Requests"){
+	
+	<h1>Request an Item</h1>
+	@form(routes.PokeItemController.addItem){
+	@inputText(requestForm("price"))
+	@inputText(requestForm("name"))
+	@inputText(requestForm("description"))
+	@inputText(requestForm("id"))
+
+	<input type="submit" value ="Request">
+
+	}
+
+}

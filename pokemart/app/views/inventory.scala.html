@@ -1,0 +1,30 @@
+@(pokeItemList: List[PokeItemModel])
+
+
+@main(title = "Inventory"){
+	
+	<h1>Inventory</h1>
+	<p>
+		<dl>
+			@for(pokeItem <- pokeItemList){
+			<dt><a href ="/inventory/@pokeItem.name">@pokeItem.name</a></dt>
+			<dd>$@pokeItem.price: @pokeItem.description</dd>
+
+
+
+		}
+
+
+
+
+
+
+		</dl>
+
+	</p>
+
+
+
+
+
+}

@@ -1,0 +1,23 @@
+@(city: String)
+
+@main(title = "Home page") {
+
+   <!-- HTML here goes into content in main    -->
+   <!-- at sign parses single scala expression -->
+   <h1>Welcome to the <FONT COLOR="#0101DF">@city</FONT> Pokemart!</h1>
+   <img src="assets/images/Pokemart.png" alt="Inside a PokeMart">
+
+<p>
+   <dl>
+   <dt><a href="/inventory">Inventory</a></dt>
+   <dd>See what's in stock</dd>
+   <dt><a href="/order">Order</a></dt>
+   <dd>Order something</dd>
+   <dt><a href="/checkout">Checkout</a></dt>
+   <dd>See your shopping cart</dd>
+   <dt><a href="/request">Request</a></dt>
+   <dd>Can't find what you want? We'll find it for you!</dd>
+   </dl>
+</p>
+
+}

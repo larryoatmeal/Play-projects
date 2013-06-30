@@ -1,0 +1,26 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.MainController.home
+
+# Product pages
+# List of products, optional page paramater.  ?page = 2 (means second page)
+GET		/products					controllers.Products.list(page: Int ?= 1)
+# Specify id in URL
+GET 	/products/:id				controllers.Products.details(id: Int)
+GET 	/products/:id/edit			controllers.Products.edit(id: Int)
+# Updating value, so use PUT
+PUT 	/products/:id				controllers.Products.update(id: Int)
+
+# To allow string file name with '/' in it
+#GET 	/photo/*file				controllers.Media.photo(file: String)
+# To constrain URLs to three digits, or use alia. Order matters! 
+#GET	/product/$ean<\d{3}>		controllers.Products.details(id: Int)
+#GET	/product/:alias				controllers.Products.alias(alias: String)
+
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
