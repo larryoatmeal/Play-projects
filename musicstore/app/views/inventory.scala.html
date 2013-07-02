@@ -1,0 +1,51 @@
+@(products: List[ProductM])
+
+@import helper._
+
+@main("Inventory list") {
+
+<div class='navbar navbar-inverse'>
+      <div class='navbar-inner'>
+        <ul class="nav">
+          <li ><a href="/">Home</a></li>
+          <li class="active"><a href="/inventory">Inventory</a></li>
+          <li><a href="/sell">Sell</a></li>
+        </ul>
+      </div>
+    </div>
+
+
+	<h1>Inventory</h1>
+	<p>
+	<table border="2" class="table table-striped">
+	
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Price</th>
+			<th>ID</th>
+
+		</tr>
+
+
+	</thead>
+
+
+	<tbody>
+		@for(product <- products){
+
+		<tr>
+			<td>@product.name</td>
+			<td>@product.price</td>
+			<td>@product.id</td>
+		</tr>
+
+		}
+	</tbody>
+
+
+
+	</table>
+	</p>
+
+}

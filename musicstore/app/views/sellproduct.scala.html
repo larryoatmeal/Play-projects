@@ -1,0 +1,50 @@
+@(productForm: Form[ProductM])
+
+
+@main("Sell Product Form"){
+	
+	<div class='navbar navbar-inverse'>
+      <div class='navbar-inner'>
+        <ul class="nav">
+          <li><a href="/">Home</a></li>
+          <li><a href="/inventory">Inventory</a></li>
+          <li class="active"><a href="/sell">Sell</a></li>
+        </ul>
+      </div>
+    </div>
+
+	<form action="@routes.ProductC.addToList()" method="post">
+
+
+		<div>
+			<label for="name">Product name</label>
+			<input type="text" name="name" id="name" placeholder="Name..."/>
+		</div>
+
+		<div>
+			<label for="price">Price</label>
+			<input type="text" name="price" id="price" 
+			placeholder="Integer only..."/>
+		</div>
+
+		<!--name must match field, id doesn't have to-->    
+		<div class ="buttons">
+			<button type="submit" class="btn btn-success">Sell</button>
+		</div>
+
+
+	</form>
+
+
+
+<!--
+	@helper.form(action = routes.ProductC.addToList){
+		@helper.inputText(productForm("name"))
+
+
+		@helper.inputText(productForm("price"))
+		<button type="submit">Sell</button>
+	}
+-->
+
+}
