@@ -30,15 +30,25 @@ object ProductC extends Controller {
   )*/
   
 
+  //Request data is put into a Map
+  //Mapping is an object of type Mapping[T]
+  //Takes a Map[String, String], and constructs an
+  //object of type T
+
+  //To process data in the form:
+  //val processedForm = productForm.bind(data)
+  //To check whether data has errors
+  //
 
   //custom construction. Don't need ID input
   val productForm = Form(
   	mapping (
-  		"name" -> text,
-  		"price" -> number
+  		"name" -> nonEmptyText,
+  		"price" -> number,
+      "checked" -> checked("Please accept terms")
   	)
-  	((name, price) => ProductM(name, price,ProductM.randomID))
-  	((product: ProductM) => Some(product.name, product.price))
+  	((name, price, _) => ProductM(name, price,ProductM.randomID))
+  	((product: ProductM) => Some(product.name, product.price, false))
   )
 
 

@@ -1,8 +1,14 @@
 @(productForm: Form[ProductM])
 
+@import helper._
+
+@{/*Using custom form constructor*/}
+
+@implicitFieldConstructor = @{ FieldConstructor(customform.render)}
+
 
 @main("Sell Product Form"){
-	
+
 	<div class='navbar navbar-inverse'>
       <div class='navbar-inner'>
         <ul class="nav">
@@ -12,7 +18,7 @@
         </ul>
       </div>
     </div>
-
+<!--
 	<form action="@routes.ProductC.addToList()" method="post">
 
 
@@ -27,24 +33,29 @@
 			placeholder="Integer only..."/>
 		</div>
 
-		<!--name must match field, id doesn't have to-->    
+		<!- -name must match field, id doesn't have to- ->    
 		<div class ="buttons">
 			<button type="submit" class="btn btn-success">Sell</button>
 		</div>
 
-
 	</form>
 
-
-
-<!--
-	@helper.form(action = routes.ProductC.addToList){
-		@helper.inputText(productForm("name"))
-
-
-		@helper.inputText(productForm("price"))
-		<button type="submit">Sell</button>
-	}
 -->
+	@form(action = routes.ProductC.addToList){
+		<!-- '_attribute -> 'blah' 'attribute -> 'blah2'   -->
+		<fieldset>
+		@inputText(productForm("name"), 
+		'_label -> "Name", 'errormessage -> "Please enter a name",
+		'placeholder -> "Enter product name...")
+
+		@inputText(productForm("price"),
+		'_label -> "Price", '_showConstraints -> false, 'errormessage -> "Integer prices only", 'placeholder -> "Enter integer price...")
+
+		@checkbox(productForm("checked"), '_label -> "Confirm", 'errormessage -> "Please confirm")
+
+
+		</fieldset>
+		<button type="submit" class = "btn btn-success">Sell</button>
+	}
 
 }
