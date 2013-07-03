@@ -5,8 +5,16 @@
 # Home page
 GET     /                           controllers.Application.index
 GET		/inventory					controllers.ProductC.inventory
+POST	/inventory          		controllers.ProductC.pageturn
+
 GET		/sell						controllers.ProductC.sell
-POST	/receipt						controllers.ProductC.addToList
+POST	/inventory/added			controllers.ProductC.addToList
+POST	/inventory/deleted			controllers.ProductC.delete(id: Int)
+POST	/update						controllers.ProductC.update(id: Int)
+POST	/inventory/updated			controllers.ProductC.modifyToList
+POST	/inventory/sorted			controllers.ProductC.sort
+GET		/inventory/all						controllers.ProductC.inventoryAll
+GET		/inventory/:pagenumber		controllers.ProductC.inventorypage(pagenumber: Int)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

@@ -4,8 +4,9 @@ import anorm._
 import anorm.SqlParser._
 import play.api.Play.current
 import play.api.db.DB
+import play.api.Logger
 
-case class ProductM(name: String, price: Int, id: Int)
+case class ProductM(name: String, price: Int, id: Int, img: String)
 
 object ProductM{
 
@@ -18,22 +19,70 @@ object ProductM{
 	}*/
 
 	//so you don't have to call retrieveAll all the time
-	var listOfProducts = retrieveAll()
-
+	//var listOfProducts = retrieveAll()
+	val productsPerPage = 5
 
 	def retrieveAll(): List[ProductM] = DB.withConnection {
 
 		implicit connection =>
 		//sql() -> Stream[sqlRow]
 		//research what map does
-		val sqlCommand = SQL("SELECT * FROM products")
+		//val sqlCommand = SQL("SELECT * FROM products")
+
+		val sqlCommand = SQL("SELECT * FROM products ORDER BY " + currentSortType)
+
 		sqlCommand().map ( row =>
 			ProductM(row[String]("name"),
 				row[Int]("price"),
-				row[Int]("id")
+				row[Int]("id"),
+				row[String]("img")
 			)
 		).toList
 	}
+
+	def retrieveSome(): List[ProductM] = DB.withConnection {
+
+		implicit connection =>
+		//sql() -> Stream[sqlRow]
+		//research what map does
+		//val sqlCommand = SQL("SELECT * FROM products")
+
+
+		val sqlCommand = SQL("SELECT * FROM products ORDER BY " + currentSortType
+			+ " LIMIT " + ((currentPage-1)*productsPerPage).toString
+			 + " , " + productsPerPage.toString)
+
+		sqlCommand().map ( row =>
+			ProductM(row[String]("name"),
+				row[Int]("price"),
+				row[Int]("id"),
+				row[String]("img")
+			)
+		).toList
+	}
+
+
+
+	def retrieveOne(id: Int): ProductM = DB.withConnection {
+		implicit connection =>
+
+		val sqlCommand = SQL("""SELECT * FROM products
+			WHERE id = {id}
+			""").on("id" -> id)
+
+		val list = sqlCommand().map ( row =>
+			ProductM(row[String]("name"),
+				row[Int]("price"),
+				row[Int]("id"),
+				row[String]("img")
+			)
+		).toList
+
+		val singleProduct = list(0)
+
+		singleProduct
+	}
+
 
 	def insert (product: ProductM) = {
 		DB.withConnection { implicit connection =>
@@ -41,12 +90,13 @@ object ProductM{
 			// INSERT INTO table_name VALUES ()
 			//{} -> paramaters, filled with .on()
 			SQL("""INSERT INTO products
-				   (id, name, price)
-			       VALUES ({id}, {name}, {price})
+				   (id, name, price, img)
+			       VALUES ({id}, {name}, {price}, {img})
 				""").on(
 				"id" -> product.id,
 				"name" -> product.name,
-				"price" -> product.price
+				"price" -> product.price,
+				"img" -> product.img
 			).executeUpdate() == 1
 		//executeUpdate returns rows affected
 		//should  be one
@@ -54,18 +104,36 @@ object ProductM{
 		}
 	}
 
-	def update(){
-		//renew list of products
-		listOfProducts = retrieveAll()
+	def update(product: ProductM){
+		Logger.info(product.id.toString)
+
+		DB.withConnection { implicit connection =>
+			SQL("""UPDATE products
+				SET name= {name}, price = {price}, img = {img}
+				WHERE id = {id}
+				"""
+				).on(
+				"id" -> product.id,
+				"name" -> product.name,
+				"price" -> product.price,
+				"img" -> product.img
+				).executeUpdate() == 1
+		}
 	}
 
-	def delete () {}
+
+	def delete (id: Int) {
+		DB.withConnection{ implicit connection =>
+		SQL("DELETE FROM PRODUCTS WHERE id = {id}").
+		on("id" -> id).executeUpdate() == 0
+		}
+	}
 
 	def randomID(): Int = {
 		import scala.util.Random
 		val random = new Random();
 		val randomInt = random.nextInt.abs
-		for ( product <- listOfProducts 
+		for ( product <- retrieveAll 
 			if (product.id == randomInt)
 			){
 			//if ID matches, call randomID again
@@ -76,4 +144,31 @@ object ProductM{
 		//otherwise, just send over randomInt
 		randomInt
 	}
+
+	/**
+	def retrieveAllSorted(sorttype: String): List[ProductM] = DB.withConnection {
+
+		implicit connection =>
+		//sql() -> Stream[sqlRow]
+		//research what map does
+		val sqlQuery = "SELECT * FROM products ORDER BY " + sorttype
+
+		val sqlCommand = SQL(sqlQuery)
+
+		val list = sqlCommand().map ( row =>
+			ProductM(row[String]("name"),
+				row[Int]("price"),
+				row[Int]("id"),
+				row[String]("img")
+			)
+		).toList
+
+		list
+	}
+	**/
+
+	var currentSortType = "name"
+	var currentPage = 1
+
+
 }

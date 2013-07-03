@@ -27,8 +27,7 @@ Set id to passed in _id
 @* Use 'var to send in any value, and elements.args.get('var) var also made a class *@
 
 
-<div class="control-group @if(elements.hasErrors){error}">
-  <div>
+<div class="@if(elements.hasErrors){control-group error}">
   <label class-"control-label">@elements.label</label>
   <div class="controls">
     @elements.input
