@@ -3,15 +3,29 @@
 @import play.api.i18n._
 @import views.html.helper._
 
-@{/*
 
 
-custom formatting for forms
-control-group error, etc. Pass in '_class - > 'foo' to get proper one. Pretty cool
-Set id to passed in _id
+
+<div class="@if(elements.hasErrors){control-group error}">
+  <label class-"control-label">@elements.label</label>
+  <div class="controls">
+    @elements.input
+    @if(elements.hasErrors){
+      <span class="help-inline">@elements.args.get('errormessage)</span>
+    }
+  </div>
+</div>
 
 
- */ }
+
+
+
+
+
+
+
+
+
 
 
 @{/*        TWITTER TEMPLATE
@@ -27,14 +41,12 @@ Set id to passed in _id
 @* Use 'var to send in any value, and elements.args.get('var) var also made a class *@
 
 
-<div class="@if(elements.hasErrors){control-group error}">
-  <label class-"control-label">@elements.label</label>
-  <div class="controls">
-    @elements.input
-    @if(elements.hasErrors){
-      <span class="help-inline">@elements.args.get('errormessage)</span>
-    }
-  </div>
-</div>
+@{/*
 
 
+custom formatting for forms
+control-group error, etc. Pass in '_class - > 'foo' to get proper one. Pretty cool
+Set id to passed in _id
+
+
+ */ }

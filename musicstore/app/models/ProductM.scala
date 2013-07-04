@@ -22,6 +22,13 @@ object ProductM{
 	//var listOfProducts = retrieveAll()
 	val productsPerPage = 5
 
+	//GLOBAL VARIABLES: Eventually have these in session data, not model
+	var currentSortType = "name"
+	var currentPage = 1
+
+
+	//*******************************************************
+	//MYSQL Communication
 	def retrieveAll(): List[ProductM] = DB.withConnection {
 
 		implicit connection =>
@@ -47,7 +54,6 @@ object ProductM{
 		//research what map does
 		//val sqlCommand = SQL("SELECT * FROM products")
 
-
 		val sqlCommand = SQL("SELECT * FROM products ORDER BY " + currentSortType
 			+ " LIMIT " + ((currentPage-1)*productsPerPage).toString
 			 + " , " + productsPerPage.toString)
@@ -60,8 +66,6 @@ object ProductM{
 			)
 		).toList
 	}
-
-
 
 	def retrieveOne(id: Int): ProductM = DB.withConnection {
 		implicit connection =>
@@ -129,7 +133,10 @@ object ProductM{
 		}
 	}
 
-	def randomID(): Int = {
+	//***************************************************
+	//Helper methods
+
+	def randomID(): Int = { // In efficient
 		import scala.util.Random
 		val random = new Random();
 		val randomInt = random.nextInt.abs
@@ -144,6 +151,23 @@ object ProductM{
 		//otherwise, just send over randomInt
 		randomInt
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	/**
 	def retrieveAllSorted(sorttype: String): List[ProductM] = DB.withConnection {
@@ -167,8 +191,7 @@ object ProductM{
 	}
 	**/
 
-	var currentSortType = "name"
-	var currentPage = 1
+	
 
 
 }

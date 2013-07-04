@@ -7,7 +7,7 @@
 
 @main("Inventory list") {
 
-<div class='navbar navbar-inverse'>
+	<div class='navbar navbar-inverse'>
       <div class='navbar-inner'>
         <ul class="nav">
           <li ><a href="/">Home</a></li>
@@ -19,6 +19,7 @@
 
 
 	<h1>Inventory</h1>
+
 
 	<h3>
 	<form action="@routes.ProductC.sort" method="post" class="form-inline">
@@ -37,52 +38,42 @@
 	</h3>
 
 
-
-
 	<p>
 	<table border="2" class="table table-striped">
-	
-	<thead>
-		<tr>
-			<th>Name</th>
-			<th>Price</th>
-			<th>ID</th>
-			<th>Image</th>
-			<th>Edit</th>
-		</tr>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Price</th>
+				<th>ID</th>
+				<th>Image</th>
+				<th>Edit</th>
+			</tr>
+		</thead>
 
-
-	</thead>
-
-
-	<tbody>
-		@for(product <- products){
-
-		<tr>
-			<td>@product.name</td>
-			<td>@product.price</td>
-			<td>@product.id</td>
-			@if(product.img == ""){
-				<td>NONE</td>
-			}else{
-				<td>
-				<img src="@product.img" alt="product.name">
-				</td>
+		<tbody>
+			@for(product <- products){
+				<tr>
+					<td>@product.name</td>
+					<td>@product.price</td>
+					<td>@product.id</td>
+					@if(product.img == ""){
+						<td>NONE</td>
+					}else{
+						<td>
+						<img src="@product.img" alt="product.name">
+						</td>
+					}
+					<td>
+						@helper.form(action = routes.ProductC.delete(product.id)){
+							<button type="submit" class = "btn btn-danger">Del</button>
+						}
+						@helper.form(action = routes.ProductC.update(product.id)){
+							<button type="submit" class = "btn btn-info">Update</button>
+						}
+					</td>
+				</tr>
 			}
-			<td>
-				@helper.form(action = routes.ProductC.delete(product.id)){
-					<button type="submit" class = "btn btn-danger">Del</button>
-				}
-				@helper.form(action = routes.ProductC.update(product.id)){
-					<button type="submit" class = "btn btn-info">Update</button>
-				}
-
-			</td>
-			
-		</tr>
-
-		}
-	</tbody>
+		</tbody>
 	</table>
 
 	<form action="@routes.ProductC.pageturn" method="post" class="form-inline">
