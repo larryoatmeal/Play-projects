@@ -1,0 +1,52 @@
+@(elements: views.html.helper.FieldElements)
+
+@import play.api.i18n._
+@import views.html.helper._
+
+
+
+
+<div class="@if(elements.hasErrors){control-group error}">
+  <label class-"control-label">@elements.label</label>
+  <div class="controls">
+    @elements.input
+    @if(elements.hasErrors){
+      <span class="help-inline">@elements.args.get('errormessage)</span>
+    }
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+@{/*        TWITTER TEMPLATE
+<div class="control-group error">
+  <label class="control-label" for="inputError">Input with error</label>
+  <div class="controls">
+    <input type="text" id="inputError">
+    <span class="help-inline">Please correct the error</span>
+  </div>
+</div>
+*/}
+
+@* Use 'var to send in any value, and elements.args.get('var) var also made a class *@
+
+
+@{/*
+
+
+custom formatting for forms
+control-group error, etc. Pass in '_class - > 'foo' to get proper one. Pretty cool
+Set id to passed in _id
+
+
+ */ }
