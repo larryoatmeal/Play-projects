@@ -79,7 +79,7 @@
 	<form action="@routes.ProductC.pageturn" method="post" class="form-inline">
 		<fieldset>
 			<input name ="page" type ="text" value="@ProductM.currentPage">
-			<label>of @((ProductM.numberOfItems-1)/ProductM.productsPerPage+1)</label>
+			<label>of @((ProductM.retrieveAll().length-1)/5+1)</label>
 			<button type="submit" class = "btn btn-primary">Go</button>
 		</fieldset>
 	</form>

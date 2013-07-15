@@ -133,21 +133,6 @@ object ProductM{
 		}
 	}
 
-	def numberOfItems = {
-		DB.withConnection{ implicit connection =>
-			val sqlCommand =SQL("SELECT COUNT(*) FROM products")
-			//sqlCommand().head[Long][].toString
-			sqlCommand().map {row=>
-				row[Long]("COUNT(*)") //Long is type, COUNT(*) is name in MySQL
-			}.toList(0)
-		}
-	}
-	//SQL() -> Stream[SqlRow]
-	//Stream is a lazy list. Part of scala
-	//Stream[SqlRow].map maps row to to whatever
-	//Stream.head returns first item of Stream
-
-
 	//***************************************************
 	//Helper methods
 
