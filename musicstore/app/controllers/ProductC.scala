@@ -16,14 +16,9 @@ object ProductC extends Controller {
 
 
   //*************  GETS  *******************//
-  def inventory = Action {
+  def inventory(page: Int) = Action {
   	//Logger.info(tempList.toString)
     //Get list of products from database
-    Ok(views.html.inventory(ProductM.retrieveSome, sortForm, pageForm))
-  }
-  
-  //DANGEROUS: Out of bounds are not caught
-  def inventorypage(page: Int) = Action {
     ProductM.currentPage = page
     Ok(views.html.inventory(ProductM.retrieveSome, sortForm, pageForm))
   }
