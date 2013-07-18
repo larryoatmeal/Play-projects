@@ -1,8 +1,8 @@
 # --- !Ups
 
 USE musicstore;
-
 DROP TABLE IF EXISTS products;
+
 CREATE TABLE products
 (
   id              int          NOT NULL,
@@ -13,6 +13,8 @@ CREATE TABLE products
   PRIMARY KEY     (id)
 
 );
+
+
 
 
 # --- !Downs
