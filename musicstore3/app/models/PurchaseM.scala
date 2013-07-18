@@ -7,7 +7,7 @@ import play.api.db.DB
 import play.api.Logger
 
 case class PurchaseM(productid: Int, firstName: String, lastName: String, quantity: Int, email: Option[String], customerID: Int)
-case class ReceiptDisplay(id: Int, productName: String, firstName: String, lastName: String, quantity: Int, customerID: Int)
+case class ReceiptDisplay(id: Int, productName: String, firstName: String, lastName: String, quantity: Int, customerID: Int, price: Int)
 
 object PurchaseM{
 
@@ -66,7 +66,7 @@ object PurchaseM{
 		val joinedList = SQL("""
 
 			SELECT products.id, products.name, purchase.firstName, purchase.lastName,
-			purchase.quantity, purchase.customerid 
+			purchase.quantity, purchase.customerid , products.price
 			FROM products
 			JOIN purchase
 			ON products.id = purchase.productid
@@ -79,7 +79,8 @@ object PurchaseM{
 				row[String]("purchase.firstName"),
 				row[String]("purchase.lastname"),
 				row[Int]("purchase.quantity"),
-				row[Int]("purchase.customerid")
+				row[Int]("purchase.customerid"),
+				row[Int]("products.price")
 				)
 
 			).toList

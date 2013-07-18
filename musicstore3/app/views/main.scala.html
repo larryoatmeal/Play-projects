@@ -21,10 +21,10 @@
                     <div class='navbar navbar-inverse'>
                     <div class='navbar-inner'>
                         <ul class="nav">
-                            <li ><a href="/">Home</a></li>
-                            <li class="active"><a href="/inventory">Inventory</a></li>
-                             <li><a href="/sell">Sell</a></li>
-                             <li><a href="/receipt">Receipt</a><li>
+                            <li class = @if(title == "Home"){"active"}><a href="/">Home</a></li>
+                            <li class= @if(title == "Inventory"){"active"}><a href="/inventory">Inventory</a></li>
+                            <li class = @if(title == "Sell"){"active"}><a href="/sell">Sell</a></li>
+                             <li class = @if(title == "Receipt"){"active"}><a href="/receipt">Receipt</a><li>
                         </ul>
                     </div>
                 </div>

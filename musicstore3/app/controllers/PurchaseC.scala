@@ -14,8 +14,7 @@ object PurchaseC extends Controller {
   }
 
   def receipt = Action {
-    val receipt = new ReceiptDisplay(5, "Trombone", "Larry", "Wang", 6, 9)
-    val dummy = List(receipt)
+   
     Ok(views.html.receipt(PurchaseM.joinProductPurchase))
 
   }
