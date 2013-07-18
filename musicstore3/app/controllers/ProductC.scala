@@ -6,7 +6,7 @@ import models._
 import play.api.data._
 import play.api.data.Forms._
 import scala.util.Random
-object ProductC extends Controller {
+object ProductC extends Controller with Secured{
   
  /* val tempList = List(
   	ProductM("Piano", 100, 0),

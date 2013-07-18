@@ -1,4 +1,6 @@
-@()
+@(user: UserM)
+
+
 
 @main("Home") {
    
@@ -7,6 +9,29 @@
 
  
 <h1>Purple Posaune</h1>
+
+<h2>@user.email</h2>
+
+
+
+
+<p>
+About You:
+<ul>
+	<li>First name: @user.firstName</li>
+	<li>Last name: @user.lastName</li>
+	<li>Credit card: @user.creditCard</li>
+	<li>Password: @user.password</li>
+
+
+</ul>
+
+
+
+</p>
+
+
+<a href = "@routes.Authentication.logout()">Logout</a>
 
  <img src ="http://www.hdm-shop.com/media/catalog/product/cache/1/image/800x600/9df78eab33525d08d6e5fb8d27136e95/p/-/p-bone-posaune-haus-der-musik-purple.jpg">  
  

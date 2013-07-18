@@ -6,11 +6,11 @@ import models._
 import play.api.data._
 import play.api.data.Forms._
 import scala.util.Random
-object PurchaseC extends Controller {
+object PurchaseC extends Controller with Secured{
   
-  def purchase(productid: Int) = Action {
+  def purchase(productid: Int) = IsAuthenticated { username => implicit request =>
 
-    Ok(views.html.purchaseproduct(purchaseForm, productid))
+    Ok(views.html.purchaseproduct(purchaseForm, productid, UserM.getUser(username)))
   }
 
   def receipt = Action {
@@ -32,13 +32,13 @@ object PurchaseC extends Controller {
     (PurchaseM.unapply)
   )
 
-  def addToList(productid: Int) = Action { implicit request =>
+  def addToList(productid: Int) = IsAuthenticated { username => implicit request =>
 
     purchaseForm.bindFromRequest.fold(
 
       formWithErrors =>{
         Logger.debug("Errror")
-        Ok(views.html.purchaseproduct(formWithErrors, productid))
+        Ok(views.html.purchaseproduct(formWithErrors, productid, UserM.getUser(username)))
 
         } ,
       value => {

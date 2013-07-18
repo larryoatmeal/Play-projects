@@ -12,7 +12,6 @@ case class ReceiptDisplay(id: Int, productName: String, firstName: String, lastN
 object PurchaseM{
 
 
-
 	def add(order: PurchaseM) = DB.withConnection {
 
 		implicit connection =>

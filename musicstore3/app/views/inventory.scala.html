@@ -87,12 +87,14 @@
 		'_label -> "Search", 'errormessage -> "Please enter a search",
 		'placeholder -> "...")
 
-		@{/*select(filterForm("constraint"), options = options(List("name", "id", "price")),
-		'_label -> "Category")
+		@{/*@inputText(filterForm("constraint"),
+		'_label -> "Category", '_showConstraints -> false, 'errormessage -> "Invalid category", 'placeholder -> "Name, ID, or Price")
 		*/}
 
-		@inputText(filterForm("constraint"),
-		'_label -> "Category", '_showConstraints -> false, 'errormessage -> "Invalid category", 'placeholder -> "Name, ID, or Price")
+		@select(filterForm("constraint"), options = options(List("name", "id", "price")),
+		'_label -> "Category")
+
+		
 		</fieldset>
 		<button type="submit" class = "btn btn-success">Go</button>
 	}

@@ -1,0 +1,33 @@
+@(loginForm: Form[Tuple2[String, String]])
+
+@implicitFieldConstructor = @{ FieldConstructor(customform.render)}
+@import helper._
+
+
+@main("Login"){
+	
+	<h1>Login</h1>
+
+	@*FOR GLOBAL ERROR DISPLAY
+	*@
+	@loginForm.globalError.map { error =>
+	<font color="red">
+  		<h2>@error.message</h2>
+  	</font>
+	}
+
+	@form(action = routes.Authentication.submit){
+		@inputText(loginForm("email"), 
+		'_label -> "Email")
+		@inputText(loginForm("password"), 
+		'_label -> "Password", 'type -> "password")
+
+		<button type ="submit" class ="btn btn-success">Enter</button>
+
+	}
+
+
+
+
+
+}

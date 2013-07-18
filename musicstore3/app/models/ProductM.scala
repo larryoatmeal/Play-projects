@@ -53,8 +53,6 @@ object ProductM{
 	}
 
 	def retrieve(page: Int, sort: String, filter: String): List[ProductM] = DB.withConnection {
-
-
 		implicit connection =>
 		//sql() -> Stream[sqlRow]
 		//research what map does
@@ -67,12 +65,7 @@ object ProductM{
 		//make column = column
 
 
-		val search = if (filter.contains(specialModeKey)){
-			val separationLocation = filter.indexOfSlice(specialModeKey)
-			filter.slice(0, separationLocation)
-		}else{
-			filter
-		}
+		
 
 		val column = if (filter.contains(specialModeKey)){
 			val separationLocation = filter.indexOfSlice(specialModeKey) + 6
@@ -83,23 +76,34 @@ object ProductM{
 			"name"
 		}
 
+		val search = if (filter.contains(specialModeKey)){
+			val separationLocation = filter.indexOfSlice(specialModeKey)
+			val parsed = filter.slice(0, separationLocation)
+			//Change wildcards depending on column
+			if (column == "name"){
+				"%" + parsed + "%" //if contains word, good
+			}else {
+				parsed
+			}
+		}else{
+			filter
+		}
+
+		/*
 		val sqlCommand = SQL("SELECT * FROM products WHERE " + column + " LIKE " + 
-			"'" + search + "'" + " ORDER BY " + sort +
+			"'%" + search + "%'" + " ORDER BY " + sort +
 			" LIMIT " + ((page-1)*productsPerPage).toString
-			 + " , " + productsPerPage.toString)
+			 + " , " + productsPerPage.toString)*/
 
-		val sqlCommand2NOTWORKING = SQL(
-			"SELECT * FROM products WHERE name LIKE " + "'" + filter + "'" + 
-			"ORDER BY {sort} LIMIT {start} , {end}"
-			).on(
-			"sort" -> "name",
-			"start" -> ((page-1)*productsPerPage),
-			"end" -> productsPerPage
-			)
-	
 
-		//Logger.debug(sqlCommand2.toString)
-		sqlCommand().map ( row =>
+		//String interpolation
+		val sqlStringCreator = s"""
+		| SELECT * FROM products WHERE $column 
+		| LIKE '$search' ORDER BY $sort LIMIT ${((page-1)*productsPerPage)}, $productsPerPage
+		""".stripMargin.filter(c => c != '\n')
+		//can't take newlines in SQL
+
+		SQL(sqlStringCreator)().map ( row =>
 			ProductM(row[String]("name"),
 				row[Int]("price"),
 				row[Int]("id"),
