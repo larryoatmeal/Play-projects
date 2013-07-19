@@ -16,16 +16,11 @@
 		<input type = "text" name = "productid" id ="productid" errormessage = "Not a valid product" value = @productID
 		readonly = "readonly">
 
-		@inputText(purchaseForm("firstName"), 
-		'_label -> "First Name*", 'errormessage -> "Not a valid name")
-		@inputText(purchaseForm("lastName"), 
-		'_label -> "Last Name*", 'errormessage -> "Not a valid name")
-		@inputText(purchaseForm("email"), 
-		'_label -> "Email", 'errormessage -> "Not a valid email address")
 		@inputText(purchaseForm("quantity"), 
 		'_label -> "Quantity*", 'errormessage -> "Must be integer")
-		@inputText(purchaseForm("customerid"), 
-		'_label -> "Customer ID*", 'errormessage -> "Invalid")
+		<label class-"control-label">Your ID</label>
+		<input type = "text" name = "customerid" id ="customerid" errormessage = "Not a valid id" value = @user.user_id
+		readonly = "readonly">
 
 		<button type="submit" class = "btn btn-info">Update</button>
 	}

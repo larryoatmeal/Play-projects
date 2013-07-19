@@ -20,9 +20,7 @@
 	
 }
 
-
 @implicitFieldConstructor = @{ FieldConstructor(customform.render)}
-
 
 @numberOfPages = @{
 	ProductM.numberOfPages(filter)
@@ -55,27 +53,16 @@
 			//need '' around scala for some reason
 
 			}
-
-
 		}
-
-		
-		
-		
-
-
 	}
 	</script>
 
 
 	
-
-
 	<h1>Inventory</h1>
 
 
-	@* Uses javascript
-	*@
+	@*Uses javascript*@
 
 	<input id = "Jpageinput" name ="text" type ="search" placeholder ="Enter page 1 to @numberOfPages" class="input-medium search-query">
 	<button onclick = "redirectPage()" type = "button" class = "btn">Go</button>
@@ -99,11 +86,8 @@
 		<button type="submit" class = "btn btn-success">Go</button>
 	}
 
-
 	<br>
 	<br>
-
-	
 
 	<p>
 	<table border="2" class="table table-striped">
@@ -181,7 +165,7 @@
 
 
 
-	</p>
+</p>
 
 
 

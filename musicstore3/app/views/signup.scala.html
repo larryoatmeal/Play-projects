@@ -1,0 +1,38 @@
+@(signupForm: Form[UserM])
+
+@implicitFieldConstructor = @{ FieldConstructor(customform.render)}
+@import helper._
+
+
+@main("Signup"){
+	
+	<h1>Signup</h1>
+
+	@form(action = routes.Authentication.submitNewUser){
+
+	<fieldset>
+	<input type = "text" name = "user_id" id ="user_id" errormessage = "Not a valid product" value = "0" 
+		readonly = "readonly"> 
+	@inputText(signupForm("firstName"), 
+		'_label -> "First Name")
+	@inputText(signupForm("lastName"), 
+		'_label -> "Last Name")
+	@inputText(signupForm("email"), 
+		'_label -> "Email")
+	@inputText(signupForm("password"), 
+		'_label -> "Password")
+	@inputText(signupForm("creditCard"), 
+		'_label -> "Credit Card")
+	@inputText(signupForm("address"), 
+		'_label -> "Address")
+
+
+	</fieldset>
+	<button type ="submit" class ="btn btn-success">Enter</button>
+
+}
+
+
+
+
+}

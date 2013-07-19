@@ -9,19 +9,19 @@ case class UserM(user_id: Int, firstName: String, lastName: String,
 	creditCard: Int, email: String, password: String,
 	address: Option[String])
 
+
+
 object UserM{
 
 	//Check if username/password match
 	def authenticate(email: String, password: String): Boolean = DB.withConnection{
 
 		implicit connection =>
-
-
 		val sqlCommand = SQL(s"""SELECT COUNT(email) FROM user
 		WHERE email = '$email' AND password = '$password' 
 		""")
 
-		Logger.debug(sqlCommand.toString)
+		//Logger.debug(sqlCommand.toString)
 
 		if (sqlCommand().map(
 			row => row[Long]("COUNT(email)")
@@ -45,7 +45,6 @@ object UserM{
 
 	def getUser(email: String): UserM = DB.withConnection{
 		implicit connection =>
-
 		SQL(s"SELECT * FROM user WHERE email = '$email'")().map(
 			row => UserM(
 				row[Int]("user_id"),
@@ -59,9 +58,22 @@ object UserM{
 			).toList(0)
 	}
 
+	def addUser(user: UserM) = DB.withConnection{
+		implicit connection =>
 
-
-
+		SQL("""INSERT INTO user
+			(firstName, lastName, creditCard, email, password, address)
+			VALUES
+			({firstName}, {lastName}, {creditCard}, {email}, {password}, {address})
+			""").on(
+			"firstName" -> user.firstName,
+			"lastName" -> user.lastName,
+			"creditCard" -> user.creditCard,
+			"email" -> user.email,
+			"password" -> user.password,
+			"address" -> user.address
+			).executeUpdate() == 1
+	}
 }
 
 

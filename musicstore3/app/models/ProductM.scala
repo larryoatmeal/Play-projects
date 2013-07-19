@@ -31,18 +31,12 @@ object ProductM{
 	//*******************************************************
 	//MYSQL Communication
 	def retrieveAll(): List[ProductM] = DB.withConnection {
-
 		implicit connection =>
 		//sql() -> Stream[sqlRow]
 		//research what map does
 		//val sqlCommand = SQL("SELECT * FROM products")
 
 		val sqlCommand = SQL("SELECT * FROM products ORDER BY name")
-
-
-
-
-
 		sqlCommand().map ( row =>
 			ProductM(row[String]("name"),
 				row[Int]("price"),
@@ -63,10 +57,7 @@ object ProductM{
 		//search-mode-column
 		//make search = search
 		//make column = column
-
-
-		
-
+		//very hacky
 		val column = if (filter.contains(specialModeKey)){
 			val separationLocation = filter.indexOfSlice(specialModeKey) + 6
 			Logger.debug(filter.slice(separationLocation, filter.length))
@@ -94,7 +85,6 @@ object ProductM{
 			"'%" + search + "%'" + " ORDER BY " + sort +
 			" LIMIT " + ((page-1)*productsPerPage).toString
 			 + " , " + productsPerPage.toString)*/
-
 
 		//String interpolation
 		val sqlStringCreator = s"""
@@ -180,9 +170,6 @@ object ProductM{
 		}
 	}
 
-	
-	
-
 	def numberOfPages(filter: String)= {
 		def numberOfItems = {
 			DB.withConnection{ implicit connection =>
@@ -209,22 +196,7 @@ object ProductM{
 	//***************************************************
 	//Helper methods
 
-	def randomID(): Int = { // In efficient
-		import scala.util.Random
-		val random = new Random();
-		val randomInt = random.nextInt.abs
-		for ( product <- retrieveAll 
-			if (product.id == randomInt)
-			){
-			//if ID matches, call randomID again
-			//Danger of infinite recursive if 
-			//all ints are taken
-			return randomID()
-		}
-		//otherwise, just send over randomInt
-		randomInt
-	}
-
+	
 
 
 
@@ -262,6 +234,26 @@ object ProductM{
 
 		list
 	}
+
+
+	def randomID(): Int = { // In efficient
+		import scala.util.Random
+		val random = new Random();
+		val randomInt = random.nextInt.abs
+		for ( product <- retrieveAll 
+			if (product.id == randomInt)
+			){
+			//if ID matches, call randomID again
+			//Danger of infinite recursive if 
+			//all ints are taken
+			return randomID()
+		}
+		//otherwise, just send over randomInt
+		randomInt
+	}
+
+
+	
 	**/
 
 	
