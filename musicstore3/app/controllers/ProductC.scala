@@ -25,10 +25,6 @@ object ProductC extends Controller with Secured{
   }
 
   
-
-  
-
-  
   //Redirect to inventory, fill with default URL query. Routes back to inventory method in this class
   val inventoryRedirect = Redirect(routes.ProductC.inventory(1, "name", "%"))//% wild card
 

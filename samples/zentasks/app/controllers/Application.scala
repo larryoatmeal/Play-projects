@@ -37,7 +37,6 @@ object Application extends Controller {
       user => Redirect(routes.Projects.index).withSession("email" -> user._1)
       //user._1 is first field of tuple, which is email
       //stored in session
-
     )
   }
 

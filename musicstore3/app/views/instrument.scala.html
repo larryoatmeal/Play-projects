@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Instrument</title>
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css">
+  <style type='text/css'>
+        body {
+          background-color: #CCC;
+        }
+  </style>
+  <script src='@routes.Assets.at("javascripts/jquery-1.9.0.min.js")'
+    type='text/javascript'></script>
+  <script src='@routes.Assets.at("javascripts/instrumentNoCoffee.js")'
+    type='text/javascript'></script>
+</head>
+<body>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="span4">  
+    <p id ="words">Instruments</p>
+    <ul id="instrument-list" json="@routes.InstrumentPage.instrumentList">
+    </ul>
+
+    </div>
+
+    <div class="span8" > 
+     
+
+      <table id="entry-list" json="/instruments/" class = "table">
+        <thead>
+        <tr>
+          <th>Comments</th>
+          <th>First</th>
+          <th>Last</th>
+          <th>User ID</th>
+          <th>Date</th>
+          <th>Image</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        </tbody>
+
+      </table>
+    <form class ="form-inline">
+      <fieldset>
+      <input type="text" placeholder="Comment here">
+      <input type="text" placeholder="Optional image URL">
+      <img src="\assets\images\button.png">
+      </fieldset>
+    </form>
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

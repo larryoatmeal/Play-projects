@@ -58,6 +58,23 @@ object UserM{
 			).toList(0)
 	}
 
+	def getUser(user_id: Int): UserM = DB.withConnection{
+		implicit connection =>
+		SQL(s"SELECT * FROM user WHERE user_id = '$user_id'")().map(
+			row => UserM(
+				row[Int]("user_id"),
+				row[String]("firstName"),
+				row[String]("lastName"),
+				row[Int]("creditCard"),
+				row[String]("email"),
+				row[String]("password"),
+				row[Option[String]]("address")
+				)
+			).toList(0)
+	}
+
+
+
 	def addUser(user: UserM) = DB.withConnection{
 		implicit connection =>
 

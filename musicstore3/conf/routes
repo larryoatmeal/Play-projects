@@ -30,9 +30,16 @@ GET		/logout						controllers.Authentication.logout
 GET		/signup						controllers.Authentication.signup
 POST	/signup						controllers.Authentication.submitNewUser
 
+GET		/instruments				controllers.InstrumentPage.mainPage
+GET		/instruments/getlist		controllers.InstrumentPage.instrumentList
+GET     /instruments/:id  			controllers.InstrumentPage.details(id: Int)
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+# Javascript routing
+#GET     /assets/javascripts/routes          controllers.Application.javascriptRoutes
 
 
 #DEPRECATED
