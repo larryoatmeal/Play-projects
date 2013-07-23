@@ -68,6 +68,7 @@ object Authentication extends Controller {
 
 
 	def logout = Action {implicit request => 
+		Logger.debug("Logged out")
 		Redirect(routes.Authentication.login).withNewSession
 	}
 

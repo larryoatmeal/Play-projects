@@ -14,4 +14,21 @@ object Application extends Controller with Secured {
     Ok(views.html.todo(message))
   }
   
+
+  def javascriptRoutes = Action { implicit request =>
+    import routes.javascript._
+    Ok(
+      Routes.javascriptRouter("jsRoutes")(
+      	Authentication.logout,
+      	InstrumentPage.addEntry,
+        InstrumentPage.addInstrument,
+        InstrumentPage.like,
+        InstrumentPage.listOfLikes,
+        InstrumentPage.unlike,
+        InstrumentPage.likersName
+      )
+    ).as("text/javascript") 
+  }
+
+
 }

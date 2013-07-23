@@ -72,8 +72,18 @@ object UserM{
 				)
 			).toList(0)
 	}
-
-
+	def getUserID(email: String) = DB.withConnection{
+      implicit connection =>
+      SQL(s"SELECT * FROM user WHERE email = '$email'")().map(
+			row => row[Int]("user_id")
+			).toList(0)
+	}
+	def getFirstName(user_id: Int) = DB.withConnection{
+		implicit connection =>
+		SQL(s"SELECT firstName FROM user WHERE user_id = '$user_id'")().map(
+			row => row[String]("firstName")
+			).toList(0)
+	}
 
 	def addUser(user: UserM) = DB.withConnection{
 		implicit connection =>

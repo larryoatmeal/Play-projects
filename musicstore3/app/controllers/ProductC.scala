@@ -136,12 +136,10 @@ object ProductC extends Controller with Secured{
         } 
 
         Redirect(routes.ProductC.inventory(filter = filterString))
-
-
-
       }
     )
   }
+  
 
 
 

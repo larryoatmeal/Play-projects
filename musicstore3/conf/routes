@@ -32,14 +32,24 @@ POST	/signup						controllers.Authentication.submitNewUser
 
 GET		/instruments				controllers.InstrumentPage.mainPage
 GET		/instruments/getlist		controllers.InstrumentPage.instrumentList
+PUT	    /instruments/addEntry		controllers.InstrumentPage.addEntry
+PUT     /instruments/addInstrument	controllers.InstrumentPage.addInstrument(name: String)
+
+PUT  	/instruments/like			controllers.InstrumentPage.like(entry_id: Int, user_id: Int)
+PUT     /instruments/unlike			controllers.InstrumentPage.unlike(entry_id: Int, user_id: Int)
+GET 	/instruments/likes			controllers.InstrumentPage.listOfLikes(entry_id: Int)
+GET     /instrument/likersName		controllers.InstrumentPage.likersName(user_id: Int)
 GET     /instruments/:id  			controllers.InstrumentPage.details(id: Int)
+
+
+# Javascript routing. MUST BE BEFORE GET /assets/*file
+GET     /assets/javascripts/routes          controllers.Application.javascriptRoutes
 
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
-# Javascript routing
-#GET     /assets/javascripts/routes          controllers.Application.javascriptRoutes
+
 
 
 #DEPRECATED

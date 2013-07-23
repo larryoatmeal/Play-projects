@@ -3,8 +3,10 @@ package controllers
 import play.api.mvc.{Action, Controller}
 import models._
 import play.api.libs.json._
+import play.api.libs.functional.syntax._
+import play.api.Logger
 
-object InstrumentPage extends Controller{
+object InstrumentPage extends Controller with Secured{
 
   //Must come first in code
   //Lets you take Json.toJson(Entry)
@@ -29,15 +31,26 @@ object InstrumentPage extends Controller{
     	"date" -> Json.toJson(e.entry.date),
     	"img" -> Json.toJson(e.entry.img),
     	"firstName" -> Json.toJson(e.firstName),
-    	"lastName" -> Json.toJson(e.lastName)	
+    	"lastName" -> Json.toJson(e.lastName),
+      "entry_id" -> Json.toJson(e.entry.entry_id)	
 	) 
   }
+  //entry={user_id: 1, comment: "Hey", date: "A long time ago", img: null, instrument_id: 1};
 
+  //Json to object
+  //Need to import play.api.libs.functional.syntax._
+  implicit val entryReads: Reads[Entry] = (
+    (JsPath \ "user_id").read[Int] and
+    (JsPath \ "comment").readNullable[String] and
+    (JsPath \ "date").read[String] and
+    (JsPath \ "img").readNullable[String] and
+    (JsPath \ "entry_id").readNullable[Int] and
+    (JsPath \ "instrument_id").read[Int]
+  )(Entry.apply _) 
 
-
-
- def mainPage = Action {
- 	Ok(views.html.instrument())
+ def mainPage = IsAuthenticated{ username => implicit request =>
+  //Logger.debug("Hello")
+ 	Ok(views.html.instrument(UserM.getUserID(username)))
 
  }
 
@@ -56,6 +69,62 @@ object InstrumentPage extends Controller{
   	Ok(Json.toJson(InstrumentPageM.joinEntryWithUserList(instrument_id)))
 
   }
+
+  /*def addEntry(user_id: Int, instrument_id: Int, comment: Option[String], img: Option[String], date: String) = Action {
+    play.api.Logger.debug("Added entry")
+    val entry = Entry(user_id, comment, date, img, None, instrument_id)//database will create own entry ID
+    InstrumentPageM.newEntry(entry)
+    Ok(views.html.todo("Add Entry"))
+
+  }*/
+
+  //ajax sends over json, this guy parses it and adds it to the database
+  def addEntry = Action(parse.json) { request =>
+    val entryJSON = request.body
+    val entry =  entryJSON.as[Entry]
+
+
+    
+    try {
+      InstrumentPageM.newEntry(entry)
+      Ok("Success") //return some kind of message
+    } catch {
+      case e:IllegalArgumentException =>
+      BadRequest("Error, not added")
+    }
+   
+  }
+
+  def addInstrument(name: String) = Action { implicit request =>
+
+    InstrumentPageM.newInstrument(Instrument(name, None))
+    Logger.debug("added")
+    Ok("success")
+  }
+
+  def like(entry_id: Int, user_id: Int) = Action {implicit request =>
+    InstrumentPageM.newLike(Like(entry_id, user_id))
+    Ok("Liked")
+  }
+  def unlike(entry_id: Int, user_id: Int) = Action { implicit request =>
+    InstrumentPageM.removeLike(Like(entry_id, user_id))
+    Ok("Unliked")
+
+  }
+
+
+  def listOfLikes(entry_id: Int) = Action { implicit request =>
+    //getLikes returns list of integers, which Json can parse automatically
+    //Logger.debug(Json.toJson(InstrumentPageM.getLikes(entry_id)).toString)
+    Ok(Json.toJson(InstrumentPageM.getLikes(entry_id)))
+  }
+
+  def likersName(user_id: Int) = Action { implicit request =>
+    Ok(UserM.getFirstName(user_id))
+  }
+
+
+
 
   /*def javascriptRoutes = Action { implicit request =>
     import routes.javascript._
