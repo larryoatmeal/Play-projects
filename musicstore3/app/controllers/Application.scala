@@ -25,7 +25,13 @@ object Application extends Controller with Secured {
         InstrumentPage.like,
         InstrumentPage.listOfLikes,
         InstrumentPage.unlike,
-        InstrumentPage.likersName
+        InstrumentPage.likersName,
+        ChordC.getSong,
+        ChordC.newSong,
+        ChordC.saveSong,
+        ChordC.deleteSong,
+        ChordC.getSongs,
+        ChordC.render
       )
     ).as("text/javascript") 
   }

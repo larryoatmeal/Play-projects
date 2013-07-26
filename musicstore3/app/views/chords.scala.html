@@ -1,0 +1,124 @@
+@(user: UserM)
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Song</title>
+  <link rel="stylesheet" href='@routes.Assets.at("stylesheets/bootstrap.min.css")'>
+  <style type='text/css'>
+        body {
+          background-color: #CCC;
+        }
+  </style>
+
+  <style>
+    textarea
+    {
+    font-family:"Courier New", monospace;
+    width: 100%;
+    }
+    #render
+    {
+      font-weight: bold;
+      font-size: 1.2em;
+
+    }
+    #render2
+    {
+      font-weight: bold;
+      font-size: 1.2em;
+      font-family:"Courier New", monospace;
+      width: 100%;
+    }
+    .slashchord 
+    {
+      color: gray;
+      font-weight: normal;
+    }
+  </style>
+
+
+  <script src='@routes.Assets.at("javascripts/jquery-1.9.0.min.js")'
+    type='text/javascript'></script>
+  
+  <script type="text/javascript" src="@routes.Application.javascriptRoutes"></script>
+  <script src='@routes.Assets.at("javascripts/song.js")'
+    type='text/javascript'></script>
+
+</head>
+<body>
+
+
+<p id="data_user_id" data="@user.user_id"></p>
+
+
+<div class="container">
+  <div class="row">
+    <div class="span12">  
+      <h1>@(user.firstName)'s Song Book</h1>
+    	<button class="btn btn-primary" id ="new">New</button>
+    	<button class="btn btn-success" id ="save">Save</button>
+    	<button class="btn btn-warning" id ="delete">Delete</button>
+    	<br>
+    	<br>
+      <form>
+        <lable class="text"> 
+          Title
+          <input id = "title" type="text" class="input-xxlarge">
+        </label>
+      </form>
+
+
+    	<form class="form-inline">
+
+    		<lable class="text"> 
+    			Composer
+		  		<input  id ="composer" type="text" class="input-small"
+		  		placeholder="@{user.firstName + " " + user.lastName}">
+		    </label>
+
+		 	<lable class="text"> 
+    			Date
+		  		<input id = "date" type="text" class="input-small">
+		    </label>	    
+		</form>
+
+    <br><br>
+
+		<form>
+			<label class ="text">
+				Open
+				<select id ="songpick">
+				</select>
+			</label>
+	    </form>
+    </div>
+
+  </div>
+
+  <div class="row"> 
+    <div class="span12">
+            <textarea id="content" rows="10"></textarea>
+
+    </div>
+  </div>
+
+  <div class="row"> 
+    <div class="span12">
+      <!-- <textarea id= "render" rows ="30"></textarea> -->
+      <pre id="render2">
+
+      </pre>
+    </div>
+  </div>
+
+</div>
+
+
+
+</body>
+</html>
+
+
+

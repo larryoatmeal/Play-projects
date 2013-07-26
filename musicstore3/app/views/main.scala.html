@@ -5,7 +5,7 @@
 <html>
     <head>
         <title>@title</title>
-        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css">
+        <link rel="stylesheet" href='@routes.Assets.at("stylesheets/bootstrap.min.css")'>
         <style type='text/css'>
         body {
         	background-color: #CCC;
@@ -26,6 +26,7 @@
                             <li class = @if(title == "Sell"){"active"}><a href="/sell">Sell</a></li>
                             <li class = @if(title == "Receipt"){"active"}><a href="/receipt">Receipt</a><li>
                             <li class = @if(title == "Instrument"){"active"}><a href="/instruments">Instruments</a><li>
+                            <li class = @if(title == "Songs"){"active"}><a href="/chords">Songs</a><li>
                         </ul>
                     </div>
                 </div>

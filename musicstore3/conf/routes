@@ -41,6 +41,15 @@ GET 	/instruments/likes			controllers.InstrumentPage.listOfLikes(entry_id: Int)
 GET     /instrument/likersName		controllers.InstrumentPage.likersName(user_id: Int)
 GET     /instruments/:id  			controllers.InstrumentPage.details(id: Int)
 
+GET     /chords						controllers.ChordC.chordMain
+PUT     /chords/save                controllers.ChordC.saveSong
+PUT  	/chords/new 				controllers.ChordC.newSong(user_id: Int)
+GET 	/chords/getsong				controllers.ChordC.getSong(song_id: Int)
+GET  	/chords/getsongs			controllers.ChordC.getSongs(user_id: Int)
+GET 	/chords/delete				controllers.ChordC.deleteSong(song_id: Int)
+GET     /chords/render				controllers.ChordC.render(raw: String)
+
+
 
 # Javascript routing. MUST BE BEFORE GET /assets/*file
 GET     /assets/javascripts/routes          controllers.Application.javascriptRoutes

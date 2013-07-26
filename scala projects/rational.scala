@@ -75,13 +75,7 @@ object Rational{
 		val i = y + 89.32894f
 
 		println(i)
-		//val z = new Rational(4, 0)
-
-
-		
-
-
-		
+		//val z = new Rational(4, 0)	
 	}
 
 }
