@@ -84,7 +84,7 @@ object ChordC extends Controller with Secured{
   	json =>
   	//Ok(request)
   	val song = json.as[Song]
-    Logger.debug(song.toString)
+    //Logger.debug(song.toString)
   	ChordM.saveSong(song)
   	Ok("Saved song")
   }
@@ -102,9 +102,22 @@ object ChordC extends Controller with Secured{
   	username =>
   	Ok(Json.toJson(ChordM.getSongs(UserM.getUserID(username))))
   }
-  def render(raw: String) = launchSecured{
-    username =>
-    Logger.debug(ChordM.formatSong(raw))
+
+  //Render doesn't work??? Same thing. Is render a reserved word?
+  //Suddenly stopped working when I added an extra parentheses.
+  //Use renderMusic instead
+  def render(raw: String) = Action{
+    implicit request =>
+    //Logger.debug(ChordM.formatSong(raw))
+    //Logger.debug(raw)
+    //println(raw)
+    //println(raw)
+    //Ok(ChordM.formatSong(raw))
+    Ok(ChordM.formatSong(raw))
+  }
+
+  def renderMusic(raw: String) = Action{
+    implicit request =>
     Ok(ChordM.formatSong(raw))
   }
 

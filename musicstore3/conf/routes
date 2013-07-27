@@ -48,6 +48,7 @@ GET 	/chords/getsong				controllers.ChordC.getSong(song_id: Int)
 GET  	/chords/getsongs			controllers.ChordC.getSongs(user_id: Int)
 GET 	/chords/delete				controllers.ChordC.deleteSong(song_id: Int)
 GET     /chords/render				controllers.ChordC.render(raw: String)
+GET     /chords/renderMusic         controllers.ChordC.renderMusic(raw: String)
 
 
 

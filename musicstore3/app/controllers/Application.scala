@@ -31,7 +31,8 @@ object Application extends Controller with Secured {
         ChordC.saveSong,
         ChordC.deleteSong,
         ChordC.getSongs,
-        ChordC.render
+        ChordC.render,
+        ChordC.renderMusic
       )
     ).as("text/javascript") 
   }

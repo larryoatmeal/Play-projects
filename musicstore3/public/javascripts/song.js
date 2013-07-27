@@ -27,6 +27,7 @@ $(document).ready(function(){
 			if (songs.length != 0){
 				currentSongIndex = 0
 				loadSong()
+				renderSong()
 			}
 		},
 		error: function(err){
@@ -93,6 +94,13 @@ $(document).ready(function(){
 	$("#save").on("click", function(){
 		saveSong()
 	})
+	$(document).keydown(function(e) {
+        if (e.keyCode == 83 && e.ctrlKey) {
+            saveSong()
+            
+        }
+    });
+
 
 	function saveSong(){
 		//alert("save")
@@ -151,6 +159,7 @@ $(document).ready(function(){
 	$("#songpick").change(function(){
 		currentSongIndex = $("#songpick option:selected").attr("songindex")
 		loadSong()
+		renderSong()
 		//refresh()
 		//loadSong is inside refresh
 		//We can't just call loadSong because want to update
@@ -165,7 +174,7 @@ $(document).ready(function(){
 		$("#date").val(songs[currentSongIndex].date)
 		$("#content").val(songs[currentSongIndex].content)
 
-		renderSong()
+		
 
 
 	}
@@ -174,29 +183,38 @@ $(document).ready(function(){
 		//alert("Hi")
 		var raw = $("#content").val()
 		//alert(raw)
-		jsRoutes.controllers.ChordC.render(raw).ajax({
+		//alert(raw)
+
+		jsRoutes.controllers.ChordC.renderMusic(raw).ajax({
 			success: function(data){
-				//$("#render").val(data)
-
-
+				//alert("Debug" + data)
 				var formatted = data.replace(/\//g, '<span class="slashchord">/</span>')
-
-
 				$("#render2").html(formatted)
-				
-    			//var formatted = $("#render").val().replace(/\//g, "*")
-
-
-				//$("#render").val(formatted)
-
-
-
 			},
 			error: function(err){
-				alert("Error")
+				alert("ERROR RENDER")
 			}
-
 		})
+
+		//For some reason this doesn't work ???? Exact same thing
+
+		// jsRoutes.controllers.ChordC.render(raw).ajax({
+		// 	success: function(data){
+		// 		//$("#render").val(data)
+		// 		//alert("success")
+		// 		var formatted = data.replace(/\//g, '<span class="slashchord">/</span>')
+		// 		$("#render2").html(formatted)
+				
+  //   			//var formatted = $("#render").val().replace(/\//g, "*")
+
+
+		// 		//$("#render").val(formatted)
+		// 	},
+		// 	error: function(err){
+		// 		alert("ERROR RENDER")
+		// 	}
+
+		// })
 
 
 	}
