@@ -50,13 +50,27 @@
 <body>
 
 
+
+
+
+
 <p id="data_user_id" data="@user.user_id"></p>
 
 
 <div class="container">
+  <div class ="row">
+    <div class ="span6">
+     <h1>@(user.firstName)'s Song Book</h1>
+   </div>
+   <div class="span6">
+     <h2>Tool Box</h2>
+   </div>
+  </div>
+
+
   <div class="row">
-    <div class="span12">  
-      <h1>@(user.firstName)'s Song Book</h1>
+    <div class="span6">  
+     
     	<button class="btn btn-primary" id ="new">New</button>
     	<button class="btn btn-success" id ="save">Save</button>
     	<button class="btn btn-warning" id ="delete">Delete</button>
@@ -78,6 +92,7 @@
 		  		placeholder="@{user.firstName + " " + user.lastName}">
 		    </label>
 
+
 		 	<lable class="text"> 
     			Date
 		  		<input id = "date" type="text" class="input-small">
@@ -94,6 +109,55 @@
 			</label>
 	    </form>
     </div>
+
+    <div class="span4">
+      <form>
+        <fieldset>
+        <label class ="text">
+          Original Key
+          <select id="origKey">
+          </select>
+        </label>
+        <label class="radio inline">
+          <input type="radio" name="origRadio" id="origSharp" value="sharp" checked class="oldRadio">
+          Sharp
+        </label>
+        <label class="radio inline">
+          <input type="radio" name="origRadio" id="origFlat" value="flat" class="oldRadio">
+          Flat
+        </label>
+
+        <label class ="text">
+          New Key
+          <select id="newKey">
+          </select>
+        </label>
+
+        <label class="radio inline">
+          <input type="radio" name="newRadio" id="newSharp" value="sharp" checked class="newRadio">
+          Sharp
+        </label>
+        <label class="radio inline">
+          <input type="radio" name="newRadio" id="newFlat" value="flat"class ="newRadio">
+          Flat
+        </label>
+        </fieldset>
+    </form>
+    </div>
+
+    <div class="span2">
+      <button class ="btn btn-info" id="transpose">Transpose</button>
+      <br>
+      <br>
+      <button class = "btn btn-info" id="download">Download</button>
+      <br>
+      <br>
+      <form class ="form-inline">
+      <label><input type = "checkbox" id="dim">°</label>
+      <labe><input type = "checkbox" id="halfdim">ø</label>
+      </form>
+    </div>
+
 
   </div>
 

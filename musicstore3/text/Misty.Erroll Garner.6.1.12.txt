@@ -1,0 +1,13 @@
+Misty
+
+(A
+|bVIImaj7 /        /        /        |IVm7     /        bVII7    /        |bIIImaj7 /        /        /        |bIIIm7   /        bVI7     /        |
+|bVIImaj7 /        Vm7      /        |Im7      /        IV7      /        |IIm7     /        V7       /        |Im7      /        IV7      /        |
+
+(A
+|bVIImaj7 /        /        /        |IVm7     /        bVII7    /        |bIIImaj7 /        /        /        |bIIIm7   /        bVI7     /        |
+|bVIImaj7 /        Vm7      /        |Im7      /        IV7      /        |IIm7     /        V7       /        |Im7      /        IV7      /        |
+
+(B
+|IVm7     /        /        /        |bVII7    /        /        /        |bIIImaj7 /        /        /        |/        /        /        /        |
+|IIIm7    /        VI7      /        

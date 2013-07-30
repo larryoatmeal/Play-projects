@@ -20,6 +20,7 @@ case class Song(content: Option[String], user_id: Int, composer: Option[String],
 case class Bar(chords: List[Chord], newline: Int, barType: Int, barString: String)//want to record number of newlines and what type of bar it is
 //Chords: list of chord strings. Newline: Number of newlines BarType: type of bar (music, text, etc) BarString: string for non musics
 case class Chord(root: Option[String], bass: Option[String], quality: Option[String], beat: Option[Int], modifier: Option[String], raw: String)
+case class RenderObject(content: String, origKey: String, destKey: String)
 
 object ChordM{
 	val TimeSig = 4
@@ -29,9 +30,7 @@ object ChordM{
 
 
 
-	private def parseTextToBars(raw: String): List[Bar] = {
-
-
+	private def parseTextToBars(raw: String, origKey: String, destKey: String): List[Bar] = {
 
 		def splitIntoBars(input: String, bars: List[String]): List[String] = {
 			//Find location of first |
@@ -84,8 +83,6 @@ object ChordM{
 			textBar.substring(firstOpen+1,lastClosed)
 		}
 	
-		
-
 		def chordize(chordS: String) = {
 			//a chord has three parts
 
@@ -151,7 +148,7 @@ object ChordM{
 				splitIntoChords(rest, chordize(chord) :: chords)
 			}else{
 				//Else is only called if everything is done. Reverse list now
-				transpose(chords.reverse, "Eb", "B")
+				transpose(chords.reverse, origKey, destKey)
 			}	
 		}
 
@@ -166,7 +163,7 @@ object ChordM{
 		print(barStrings)
 
 
-		//Tuple2(String, Int)
+		//Tuple2(String, Int) Contain bar and bar type
 		val barObjects = barTuples.map(
 			barTuple => {
 				val barString = barTuple._1
@@ -179,22 +176,11 @@ object ChordM{
 				}
 			}
 		)
-
-
-
-		// val barObjects = barStrings.map(
-		// 	barString => Bar(splitIntoChords(barString, List()).reverse, barString.count(_ =='\n'), 0)
-		// 			//must reverse chord list
-		// 			//If barstring contains a newline, record it
-		// )
-
 		barObjects
 	}
 
-	def formatSong(raw: String) = {//No vars! YAY. 
-
-
-		val bars = parseTextToBars(raw)
+	def formatSong(raw: String, origKey: String = "Eb", destKey: String = "Ab") = {//No vars! YAY. 
+		val bars = parseTextToBars(raw, origKey, destKey)
 		val longestChord = bars.foldLeft(0)((b, bar) => 
 		{
 			val longestChordInBar = bar.chords.foldLeft(0)((c, chord) =>
@@ -321,6 +307,7 @@ object ChordM{
 		finalOutput
 	}
 
+	//If destinationKey is "Roman" -> use Roman numeral
 	def transpose(chords: List[Chord], currentKey: String, destinationKey: String) = {
 		//Convert letter into number
 		def midify(notename: String) = {
@@ -382,7 +369,7 @@ object ChordM{
 				"X"
 			}
 		}
-		def majorScalify(midinote: Int) = {//Get midi notes for any scale
+		@deprecated def majorScalify(midinote: Int) = {//Get midi notes for any scale
 			Map ( //W W H W W W H
 				1 -> midinote,
 				2 -> (midinote + 2)%12,
@@ -394,7 +381,7 @@ object ChordM{
 			)
 		}
 
-		def getMajorScale(notename: String) = {
+		@deprecated def getMajorScale(notename: String) = {
 			//Example:
 			//notename: Eb
 
@@ -421,7 +408,8 @@ object ChordM{
 				
 		}
 
-		def getChromaticScale(notename: String) = {
+
+		@deprecated def getChromaticScale(notename: String) = {
 			val midinote = midify(notename)
 			val scaleMidi = Map(
 				0 -> midinote,
@@ -471,45 +459,113 @@ object ChordM{
 				(map, index) =>
 				map ++ Map(scaleMidi(index) -> finalScale(index))
 			}
-
-
 		}
 
 
-		val differenceInSemitones = (midify(destinationKey) - midify(currentKey))
-		val noteMapping = getChromaticScale(destinationKey)
+		def getRoman(note: String) = {
+			val currentMidi = midify(note)
+			val currentLetter = note.head.toString
+			val currentKeyLetter = currentKey.head.toString
+
+			//Interval distance (1, 2, 3, 4, 5, 6, 7, etc)
+			val intervalInt = (doremiMod(currentLetter) - doremiMod(currentKeyLetter) + 7)%7 + 1
+			//Actual distance
+			val midiDistance = (midify(note) - midify(currentKey) + 12)%12
+
+			//Map perfect/major intervals to midi note differences
+			val intervalMap = Map(
+				1 -> 0,
+				2 -> 2,
+				3 -> 4,
+				4 -> 5,
+				5 -> 7,
+				6 -> 9,
+				7 -> 11
+			)
+
+			val romanExtension = intervalInt match {
+				case 1 | 4 | 5 => { //perfect intervals
+					(midiDistance - intervalMap(intervalInt)) match { //Discrepancy between interval and perfect
+						case 0 => ""
+						case 1 => "#" //Up 1
+						case -1 => "b" //Down 1
+					}
+				}
+				case 2 | 3 | 6 |7 => {
+					(midiDistance - intervalMap(intervalInt)) match { //Discrepancy between interval and major
+						case 0 => ""
+						case 1 => "#" //Up one
+						case -1 => "b" //Down one
+						case -2 => "bb" //Down two
+					}
+				}
+			}
+
+			val romanMap = Map(
+				1 -> "I",
+				2 -> "II",
+				3 -> "III",
+				4 -> "IV",
+				5 -> "V",
+				6 -> "VI",
+				7 -> "VII"
+			)
+
+			romanExtension + romanMap(intervalInt)
+		}
+
+
+		
+
+		//val differenceInSemitones = (midify(destinationKey) - midify(currentKey))
+		//val noteMapping = getChromaticScale(destinationKey)
+
+
+
+		
+
+		def newNote(note: String) = {
+			val keyMidi = midify(currentKey)
+			val keyLetter = doremiMod(currentKey.head.toString)
+			val newKeyMidi = midify(destinationKey)
+			val newKeyLetter = doremiMod(destinationKey.head.toString)
+			//Measure each note with relation to root
+			//Apply same relationship to new key
+			val midiDelta = midify(note) - keyMidi
+			val letterDelta = doremiMod(note.head.toString) - keyLetter
+			val transposedMIDI = (newKeyMidi + midiDelta + 12)%12
+			val desiredLetter = reverseDoremiMod((newKeyLetter + letterDelta + 7)%7)
+
+			findSpelling(transposedMIDI, desiredLetter)
+		}
+	
+
 
 		val newchords = for (chord <- chords) yield {
-
 			val newRootName = if (chord.root.isEmpty){
 				None
 			}else{
-				val currentRootMIDI = midify(chord.root.get) //Deal with Some/None later
-				val newRootMIDI = (currentRootMIDI + differenceInSemitones + 12)%12
-				Some(noteMapping(newRootMIDI))
+				if (destinationKey == "Roman"){
+					Some(getRoman(chord.root.get))
+				}else{
+					Some(newNote(chord.root.get))
+				}
 			}
 
 			val newBassName = if (chord.bass.isEmpty){
 				None
 			}else{
-				val currentBassMIDI = midify(chord.bass.get) //Deal with Some/None later
-				val newBassMIDI = (currentBassMIDI + differenceInSemitones + 12)%12
-				Some(noteMapping(newBassMIDI))
+				if (destinationKey == "Roman"){
+					Some(getRoman(chord.bass.get))
+				}else{
+					Some(newNote(chord.bass.get))
+				}
 			}
-
-
-
 			
-			//println(newRootName)
-
-			// val currentBassMIDI = midify(chord.bass.get) //Deal with Some/None later
-			// val newBassMIDI = (currentBassMIDI + differenceInSemitones)%12
-			// val newBassName = noteMapping(newBassMIDI)
 			val newraw = newRootName.getOrElse("") + chord.quality.getOrElse("") + newBassName.getOrElse("") 
+
 			Chord(newRootName, newBassName, chord.quality, chord.beat, chord.modifier, newraw)
 		}
-
-		println(newchords)
 		newchords
 	}
 
@@ -630,6 +686,9 @@ object ChordM{
 
 		// 	}
 		// }
-
+	
+	// val currentBassMIDI = midify(chord.bass.get) //Deal with Some/None later
+			// val newBassMIDI = (currentBassMIDI + differenceInSemitones)%12
+			// val newBassName = noteMapping(newBassMIDI)
 
 	*/

@@ -3,7 +3,8 @@ $(document).ready(function(){
 	var user_id = $("#data_user_id").attr("data")
 	var songs = new Array() //store al songs in actual array
 	var currentSongIndex = 0
-
+	var originalKey = "C"
+	var destinationKey = "C"
 
 	//Regets all song objects, repopulates drop down, opens up first song
 	function refresh(){
@@ -163,9 +164,10 @@ $(document).ready(function(){
 		//refresh()
 		//loadSong is inside refresh
 		//We can't just call loadSong because want to update
-
-
 	}
+
+
+
 	)
 
 	function loadSong(){
@@ -173,19 +175,27 @@ $(document).ready(function(){
 		$("#composer").val(songs[currentSongIndex].composer)
 		$("#date").val(songs[currentSongIndex].date)
 		$("#content").val(songs[currentSongIndex].content)
-
-		
-
-
 	}
 
 	function renderSong(){
-		//alert("Hi")
 		var raw = $("#content").val()
-		//alert(raw)
-		//alert(raw)
+	
+		renderObject = {content: raw, origKey: originalKey, destKey: destinationKey}
+		renderJSON = JSON.stringify(renderObject)
 
-		jsRoutes.controllers.ChordC.renderMusic(raw).ajax({
+		// jsRoutes.controllers.ChordC.renderMusic(raw).ajax({
+		// 	success: function(data){
+		// 		//alert("Debug" + data)
+		// 		var formatted = data.replace(/\//g, '<span class="slashchord">/</span>')
+		// 		$("#render2").html(formatted)
+		// 	},
+		// 	error: function(err){
+		// 		alert("ERROR RENDER")
+		// 	}
+		// })
+
+	    //Get doesn't work! Must use PUT or POST?
+		jsRoutes.controllers.ChordC.renderWithOptions(renderJSON).ajax({
 			success: function(data){
 				//alert("Debug" + data)
 				var formatted = data.replace(/\//g, '<span class="slashchord">/</span>')
@@ -193,10 +203,196 @@ $(document).ready(function(){
 			},
 			error: function(err){
 				alert("ERROR RENDER")
-			}
+			},
+			data: renderJSON,
+			contentType: "application/json"
 		})
 
-		//For some reason this doesn't work ???? Exact same thing
+
+	}
+
+	//Tranposition box
+
+	var sharps = new Array();
+	sharps[0] = "C"
+	sharps[1] = "C#"
+	sharps[2] = "D"
+	sharps[3] = "D#"
+	sharps[4] = "E"
+	sharps[5] = "F"
+	sharps[6] = "F#"
+	sharps[7] = "G"
+	sharps[8] = "G#"
+	sharps[9] = "A"
+	sharps[10] = "A#"
+	sharps[11] = "B"
+
+	var flats = new Array();
+	flats[0] = "C"
+	flats[1] = "Db"
+	flats[2] = "D"
+	flats[3] = "Eb"
+	flats[4] = "E"
+	flats[5] = "F"
+	flats[6] = "Gb"
+	flats[7] = "G"
+	flats[8] = "Ab"
+	flats[9] = "A"
+	flats[10] = "Bb"
+	flats[11] = "Cb"
+
+
+	function fillSharpsOrig(){
+		//alert("Fill sharps")
+		//alert($("#origKey").val())
+
+
+		$("#origKey").empty()
+
+		sharps.forEach(function(element, index){
+		$("#origKey").append(
+			$('<option>').text(element)
+		)
+		})
+
+	}
+	function fillSharpsNew(){
+		$("#newKey").empty()
+		sharps.forEach(function(element, index){
+		$("#newKey").append(
+			$('<option>').text(element)
+		)
+		})
+
+		$("#newKey").append(
+			$('<option>').text("Roman")
+		)	
+	}
+	function fillFlatsOrig(){
+		$("#origKey").empty()
+
+		flats.forEach(function(element, index){
+		$("#origKey").append(
+			$('<option>').text(element)
+		)
+		})	
+	}
+	function fillFlatsNew(){
+		$("#newKey").empty()
+
+		flats.forEach(function(element, index){
+		$("#newKey").append(
+			$('<option>').text(element)
+		)
+		})
+
+		$("#newKey").append(
+			$('<option>').text("Roman")
+		)	
+	}
+	
+	fillSharpsOrig()
+	fillSharpsNew()
+
+
+
+
+	// $("#origKey").append(
+	// 	$('<option>').text("C")
+	// )
+
+	$(".oldRadio").change(function(){
+		var origRadio = $('input:radio[name=origRadio]:checked').val()
+		//lowercased for somereason
+
+		if (origRadio == "sharp"){
+			//alert("sharp")
+			fillSharpsOrig()
+		}else{
+			//alert("flat")
+			fillFlatsOrig()
+		}
+
+	})
+	$(".newRadio").change(function(){
+		var newRadio = $('input:radio[name=newRadio]:checked').val()
+		//lowercased for somereason
+
+		if (newRadio == "sharp"){
+			fillSharpsNew()
+		}else{
+			fillFlatsNew()
+		}
+	})
+
+	$("#transpose").on("click", function(){
+		originalKey = $("#origKey").val()
+		destinationKey = $("#newKey").val()
+		renderSong()
+	})
+
+	$("#download").on("click", function(){
+		//Write to file
+		var currentDate = new Date()
+		var month = currentDate.getMonth()
+		var day = currentDate.getDay()
+		var minute = currentDate.getMinutes()
+
+
+		var filename = songs[currentSongIndex].title + "." + songs[currentSongIndex].composer + "." + month + "." + day + "." + minute+ ".txt"
+		
+		var raw = $("#content").val()
+	
+		//Get text without special html formatting
+		renderObject = {content: raw, origKey: originalKey, destKey: destinationKey}
+		renderJSON = JSON.stringify(renderObject)
+
+		jsRoutes.controllers.ChordC.renderWithOptions(renderJSON).ajax({
+			success: function(data){
+				//Upload, then download
+				jsRoutes.controllers.ChordC.writefile(data, filename).ajax({
+					success: function(){
+
+						var url = jsRoutes.controllers.ChordC.download(filename).url;
+						//alert(url)
+						location.href = url
+
+
+					},
+					error: function(){
+						alert("Error downloading")
+					}
+
+
+				})
+			},
+			error: function(err){
+				alert("ERROR RENDER")
+			},
+			data: renderJSON,
+			contentType: "application/json"
+		})
+
+
+
+
+
+
+		
+		//location.href = "http://www.google.com"
+
+
+	})
+
+	
+
+
+
+		//refresh()
+		//loadSong is inside refresh
+		//We can't just call loadSong because want to update
+
+	//For some reason this doesn't work ???? Exact same thing
 
 		// jsRoutes.controllers.ChordC.render(raw).ajax({
 		// 	success: function(data){
@@ -217,7 +413,22 @@ $(document).ready(function(){
 		// })
 
 
-	}
+
+
+	// jsRoutes.controllers.ChordC.dummy().ajax({
+	// 	success: function(data){
+	// 		alert(data)
+	// 	},
+	// 	error: function(err){
+
+	// 	},
+	// 	data: "Hello",
+	// 	contentType: "application/json"
+
+
+	// })
+
+
 
 	//New: Reget JSON, reget drop down, return to first selection
 	//Save: Reget JSON, don't do anything with drop down

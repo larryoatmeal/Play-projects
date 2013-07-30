@@ -49,8 +49,10 @@ GET  	/chords/getsongs			controllers.ChordC.getSongs(user_id: Int)
 GET 	/chords/delete				controllers.ChordC.deleteSong(song_id: Int)
 GET     /chords/render				controllers.ChordC.render(raw: String)
 GET     /chords/renderMusic         controllers.ChordC.renderMusic(raw: String)
-
-
+PUT     /chords/renderWithOptions   controllers.ChordC.renderWithOptions
+GET     /chords/dummy               controllers.ChordC.dummy
+GET     /chords/download			controllers.ChordC.download(filename: String)
+GET     /chords/writefile           controllers.ChordC.writefile(text: String, fileName: strings)
 
 # Javascript routing. MUST BE BEFORE GET /assets/*file
 GET     /assets/javascripts/routes          controllers.Application.javascriptRoutes

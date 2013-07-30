@@ -5,7 +5,7 @@ import models._
 import play.api.libs.json._
 import play.api.libs.functional.syntax._
 import play.api.Logger
-
+import play.api.libs.Files
 
 
 object ChordC extends Controller with Secured{
@@ -64,7 +64,14 @@ object ChordC extends Controller with Secured{
     (JsPath \ "date").readNullable[String] and
     (JsPath \ "song_id").readNullable[Int] and
     (JsPath \ "title").readNullable[String]
-  )(Song.apply _) 
+  )(Song.apply _)
+
+
+  implicit val renderReads: Reads[RenderObject] = (
+    (JsPath \ "content").read[String] and
+    (JsPath \ "origKey").read[String] and
+    (JsPath \ "destKey").read[String]
+  )(RenderObject.apply _)
 
 
 
@@ -106,7 +113,7 @@ object ChordC extends Controller with Secured{
   //Render doesn't work??? Same thing. Is render a reserved word?
   //Suddenly stopped working when I added an extra parentheses.
   //Use renderMusic instead
-  def render(raw: String) = Action{
+  @deprecated def render(raw: String) = Action{
     implicit request =>
     //Logger.debug(ChordM.formatSong(raw))
     //Logger.debug(raw)
@@ -116,9 +123,36 @@ object ChordC extends Controller with Secured{
     Ok(ChordM.formatSong(raw))
   }
 
+  def renderWithOptions = getJson{
+    json =>
+    val renderObject = json.as[RenderObject]
+    Logger.debug("Hello")
+    Ok(ChordM.formatSong(renderObject.content, renderObject.origKey, renderObject.destKey))
+  }
+
+
+  def dummy = Action {
+    implicit request =>
+    Ok(request.toString)
+
+  }
+
+
   def renderMusic(raw: String) = Action{
     implicit request =>
     Ok(ChordM.formatSong(raw))
+  }
+
+  def download(filename: String) = Action{
+    implicit request =>
+    Ok.sendFile(new java.io.File("text/"+filename))
+
+  }
+
+  def writefile(text: String, filename: String) = Action{
+    implicit request =>
+    Files.writeFile(new java.io.File(s"text/$filename"),text)
+    Ok(text)
   }
 
 
