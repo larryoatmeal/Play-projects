@@ -36,7 +36,8 @@ object Application extends Controller with Secured {
         ChordC.renderWithOptions,
         ChordC.dummy,
         ChordC.writefile,
-        ChordC.download
+        ChordC.download,
+        ChordC.musicXML
       )
     ).as("text/javascript") 
   }

@@ -70,7 +70,8 @@ object ChordC extends Controller with Secured{
   implicit val renderReads: Reads[RenderObject] = (
     (JsPath \ "content").read[String] and
     (JsPath \ "origKey").read[String] and
-    (JsPath \ "destKey").read[String]
+    (JsPath \ "destKey").read[String] and
+    (JsPath \ "timeSig").read[Int]
   )(RenderObject.apply _)
 
 
@@ -126,16 +127,35 @@ object ChordC extends Controller with Secured{
   def renderWithOptions = getJson{
     json =>
     val renderObject = json.as[RenderObject]
-    Logger.debug("Hello")
-    Ok(ChordM.formatSong(renderObject.content, renderObject.origKey, renderObject.destKey))
+    //Logger.debug("Hello")
+    Ok(ChordM.formatSong(renderObject.content, renderObject.origKey, renderObject.destKey, renderObject.timeSig))
   }
 
 
   def dummy = Action {
     implicit request =>
-    Ok(request.toString)
+    val data = ChordM.musicXML("""|(Misty)
+|((A)|Ebmaj7 |Bbm7 Eb7 |Abmaj7| Abm7 Db7
+|Ebmaj7 Cm7| Fm7 Bb7 |Gm7 C7|Fm7 Bb7
+
+|((A)|Ebmaj7 |Bbm7 Eb7 |Abmaj7| Abm7 Db7
+|Ebmaj7 Cm7| Fm7 Bb7 |Gm7 C7|Fm7 Bb7
+
+|((B)|Bbm7 | Eb7 |Abmaj7 | 
+|Am7 D7| G | A |""")
+
+
+    Ok(data)
 
   }
+
+  def musicXML(raw: String) = Action {
+    implicit request =>
+    val data = ChordM.musicXML(raw)
+
+    Ok(data)
+  }
+
 
 
   def renderMusic(raw: String) = Action{

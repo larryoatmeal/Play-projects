@@ -5,6 +5,27 @@ $(document).ready(function(){
 	var currentSongIndex = 0
 	var originalKey = "C"
 	var destinationKey = "C"
+	var currentTimeSig = 4
+
+
+	// //Tester
+	// function tester(){
+	// 	jsRoutes.controllers.ChordC.dummy().ajax({
+	// 		success: function(data){
+
+	// 		},
+	// 		error: function(err){
+
+	// 		}
+	// 	})
+	// }
+	// tester()
+
+
+
+
+
+
 
 	//Regets all song objects, repopulates drop down, opens up first song
 	function refresh(){
@@ -174,13 +195,24 @@ $(document).ready(function(){
 		$("#title").val(songs[currentSongIndex].title)
 		$("#composer").val(songs[currentSongIndex].composer)
 		$("#date").val(songs[currentSongIndex].date)
-		$("#content").val(songs[currentSongIndex].content)
+		
+
+		// MySQL won't store triangle unicode. Will store it as
+		//question mark
+		//So take question mark and convert it to triangle
+		//when loading song
+		//User should not use question mark!
+
+		var triangledContent = songs[currentSongIndex].content.replace(/\?/g, '\u25B2')
+		$("#content").val(triangledContent)
+
+
 	}
 
 	function renderSong(){
 		var raw = $("#content").val()
 	
-		renderObject = {content: raw, origKey: originalKey, destKey: destinationKey}
+		renderObject = {content: raw, origKey: originalKey, destKey: destinationKey, timeSig: currentTimeSig}
 		renderJSON = JSON.stringify(renderObject)
 
 		// jsRoutes.controllers.ChordC.renderMusic(raw).ajax({
@@ -197,8 +229,10 @@ $(document).ready(function(){
 	    //Get doesn't work! Must use PUT or POST?
 		jsRoutes.controllers.ChordC.renderWithOptions(renderJSON).ajax({
 			success: function(data){
-				//alert("Debug" + data)
+				//Make slash chords grey,nonbold with css span
 				var formatted = data.replace(/\//g, '<span class="slashchord">/</span>')
+
+
 				$("#render2").html(formatted)
 			},
 			error: function(err){
@@ -344,7 +378,7 @@ $(document).ready(function(){
 		var raw = $("#content").val()
 	
 		//Get text without special html formatting
-		renderObject = {content: raw, origKey: originalKey, destKey: destinationKey}
+		renderObject = {content: raw, origKey: originalKey, destKey: destinationKey, timeSig: currentTimeSig}
 		renderJSON = JSON.stringify(renderObject)
 
 		jsRoutes.controllers.ChordC.renderWithOptions(renderJSON).ajax({
@@ -373,18 +407,46 @@ $(document).ready(function(){
 			contentType: "application/json"
 		})
 
+	})
 
-
-
-
-
-		
-		//location.href = "http://www.google.com"
-
+	$("#musicxml").on("click", function(){
+		var data = $("#content").val()
+		var url = jsRoutes.controllers.ChordC.musicXML(data).url;
+		location.href = url
 
 	})
 
-	
+		//Diminished/half dimished
+		//Change all 0's to dim
+		//Change all o's to halfdim
+
+	$("#dim").on("click", function(){
+			//alert("Dim")
+			var score = $("#content").val()
+			var dimScore = score.replace(/0/g,'\u00B0')
+			$("#content").val(dimScore)
+	})
+
+	$("#halfdim").on("click", function(){
+			//alert("halfdim")
+			var score = $("#content").val()
+			var halfdimScore = score.replace(/o/g,'\u00D8')
+			$("#content").val(halfdimScore)
+
+	})
+
+	$("#triangle").on("click", function(){
+			var score = $("#content").val()
+			var halfdimScore = score.replace(/\^/g,'\u25B2')
+			$("#content").val(halfdimScore)
+
+	})
+
+	$("#timeSig").change(function(){
+		currentTimeSig = parseInt($("#timeSig").val(), 10)
+		renderSong()
+
+	})
 
 
 

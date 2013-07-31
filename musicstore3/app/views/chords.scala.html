@@ -12,6 +12,10 @@
         }
   </style>
 
+
+
+
+
   <style>
     textarea
     {
@@ -141,6 +145,23 @@
           <input type="radio" name="newRadio" id="newFlat" value="flat"class ="newRadio">
           Flat
         </label>
+
+        <br>
+        <br>
+
+        <label class ="text">
+          Time Signature
+          <select id="timeSig">
+            <option>2</option>
+            <option>3</option>
+            <option selected="selected">4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+          </select>
+        </label>
+
+
         </fieldset>
     </form>
     </div>
@@ -152,10 +173,13 @@
       <button class = "btn btn-info" id="download">Download</button>
       <br>
       <br>
-      <form class ="form-inline">
-      <label><input type = "checkbox" id="dim">°</label>
-      <labe><input type = "checkbox" id="halfdim">ø</label>
-      </form>
+      <button class = "btn btn-info" id="musicxml">MusicXML</button>
+      <br>
+      <br>
+      
+      <button class = "btn btn-info" id="dim" title="Replace '0'">°</button>
+      <button class = "btn btn-info" id="halfdim" title="Replace 'o'"><sup>ø</sup></button>
+      <button class = "btn btn-info" id="triangle" title="Replace '^'">▲</button>
     </div>
 
 
