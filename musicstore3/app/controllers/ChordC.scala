@@ -6,6 +6,7 @@ import play.api.libs.json._
 import play.api.libs.functional.syntax._
 import play.api.Logger
 import play.api.libs.Files
+import scala.xml.dtd.{DocType, PublicID} 
 
 
 object ChordC extends Controller with Secured{
@@ -50,7 +51,9 @@ object ChordC extends Controller with Secured{
     	"composer" -> Json.toJson(s.composer),
     	"date" -> Json.toJson(s.date),
     	"song_id" -> Json.toJson(s.song_id),
-      "title" -> Json.toJson(s.title)	
+      "title" -> Json.toJson(s.title),
+      "timeSig" -> Json.toJson(s.timeSig),
+      "keysig" -> Json.toJson(s.keysig)	
 	) 
   }
   //entry={user_id: 1, comment: "Hey", date: "A long time ago", img: null, instrument_id: 1};
@@ -63,7 +66,9 @@ object ChordC extends Controller with Secured{
     (JsPath \ "composer").readNullable[String] and
     (JsPath \ "date").readNullable[String] and
     (JsPath \ "song_id").readNullable[Int] and
-    (JsPath \ "title").readNullable[String]
+    (JsPath \ "title").readNullable[String] and
+    (JsPath \ "timeSig").readNullable[Int] and
+    (JsPath \ "keysig").readNullable[String]
   )(Song.apply _)
 
 
@@ -134,28 +139,39 @@ object ChordC extends Controller with Secured{
 
   def dummy = Action {
     implicit request =>
-    val data = ChordM.musicXML("""|(Misty)
-|((A)|Ebmaj7 |Bbm7 Eb7 |Abmaj7| Abm7 Db7
-|Ebmaj7 Cm7| Fm7 Bb7 |Gm7 C7|Fm7 Bb7
+//     val data = ChordM.musicXML("""|(Misty)
+// |((A)|Ebmaj7 |Bbm7 Eb7 |Abmaj7| Abm7 Db7
+// |Ebmaj7 Cm7| Fm7 Bb7 |Gm7 C7|Fm7 Bb7
 
-|((A)|Ebmaj7 |Bbm7 Eb7 |Abmaj7| Abm7 Db7
-|Ebmaj7 Cm7| Fm7 Bb7 |Gm7 C7|Fm7 Bb7
+// |((A)|Ebmaj7 |Bbm7 Eb7 |Abmaj7| Abm7 Db7
+// |Ebmaj7 Cm7| Fm7 Bb7 |Gm7 C7|Fm7 Bb7
 
-|((B)|Bbm7 | Eb7 |Abmaj7 | 
-|Am7 D7| G | A |""")
+// |((B)|Bbm7 | Eb7 |Abmaj7 | 
+// |Am7 D7| G | A |""")
 
 
-    Ok(data)
+    Ok("Ok")
 
   }
 
-  def musicXML(raw: String) = Action {
+  def musicXML(raw: String, destKey: String) = getJson {
+    json =>
+    val song = json.as[Song]
+    val data = ChordM.musicXML(raw, destKey, song)
+    val docType = new DocType("score-partwise", PublicID("-//Recordare//DTD MusicXML 3.0 Partwise//EN", "http://www.musicxml.org/dtds/partwise.dtd"), Nil)
+
+    val filename = song.title.getOrElse("title") + "_" + song.composer.getOrElse("composer") + ".xml"
+    scala.xml.XML.save(s"musicXML/$filename", data, "UTF-8", true, docType)
+
+
+    Ok(filename) //send back filename as result
+  }
+
+  def downXML(filename: String) = Action{
     implicit request =>
-    val data = ChordM.musicXML(raw)
+    Ok.sendFile(new java.io.File(s"musicXML/$filename"))
 
-    Ok(data)
   }
-
 
 
   def renderMusic(raw: String) = Action{
@@ -173,7 +189,18 @@ object ChordC extends Controller with Secured{
     implicit request =>
     Files.writeFile(new java.io.File(s"text/$filename"),text)
     Ok(text)
+    
   }
+
+  def chordMidi(raw: String, destKey: String) = getJson {
+    json =>
+    val song = json.as[Song]
+    val data = ChordM.chordMidi(raw, destKey, song)
+
+
+    Ok(data) //send back filename as result
+  }
+
 
 
   //def saveSong

@@ -59,7 +59,7 @@
 
 
 <p id="data_user_id" data="@user.user_id"></p>
-
+<p id ="data_user_email" data="@user.email"></p>
 
 <div class="container">
   <div class ="row">
@@ -83,7 +83,7 @@
       <form>
         <lable class="text"> 
           Title
-          <input id = "title" type="text" class="input-xxlarge">
+          <input id = "title" type="text" class="input-large">
         </label>
       </form>
 
@@ -176,10 +176,15 @@
       <button class = "btn btn-info" id="musicxml">MusicXML</button>
       <br>
       <br>
-      
+
       <button class = "btn btn-info" id="dim" title="Replace '0'">°</button>
       <button class = "btn btn-info" id="halfdim" title="Replace 'o'"><sup>ø</sup></button>
       <button class = "btn btn-info" id="triangle" title="Replace '^'">▲</button>
+      <br>
+      <br>
+       <button class = "btn btn-info" id ="email">Email</button>
+       <button class = "btn btn-info" id ="chords">Chords</button>
+      
     </div>
 
 
@@ -196,6 +201,15 @@
     <div class="span12">
       <!-- <textarea id= "render" rows ="30"></textarea> -->
       <pre id="render2">
+
+      </pre>
+    </div>
+  </div>
+
+  <div class="row"> 
+    <div class="span12">
+      <!-- <textarea id= "render" rows ="30"></textarea> -->
+      <pre id="chordChart">
 
       </pre>
     </div>

@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
 	var user_id = $("#data_user_id").attr("data")
+	var email = $("#data_user_email").attr("data")
 	var songs = new Array() //store al songs in actual array
 	var currentSongIndex = 0
 	var originalKey = "C"
@@ -132,10 +133,13 @@ $(document).ready(function(){
 		var date = $("#date").val()
 		var song_id = songs[currentSongIndex].song_id
 		var title = $("#title").val()
+		var keysig = $("#origKey").val()
 
 
-		song={content: content, user_id: user_id_current, composer: composer, date: date, song_id: song_id, title: title};
+		song={content: content, user_id: user_id_current, composer: composer, date: date, song_id: song_id, title: title,
+			timeSig: currentTimeSig, keysig: keysig};
 		songJSON = JSON.stringify(song)
+		//alert(songJSON)
 		//alert(songJSON)
 
 		jsRoutes.controllers.ChordC.saveSong(songJSON).ajax(
@@ -157,9 +161,6 @@ $(document).ready(function(){
 					}
 				}
 				)
-
-
-
 			},
 			error: function(){
 				alert("error")
@@ -195,7 +196,58 @@ $(document).ready(function(){
 		$("#title").val(songs[currentSongIndex].title)
 		$("#composer").val(songs[currentSongIndex].composer)
 		$("#date").val(songs[currentSongIndex].date)
+
+		//Time signature
+		if (songs[currentSongIndex].timeSig){ //if truthy
+			$("#timeSig").val(songs[currentSongIndex].timeSig)
+		}else{
+			$("#timeSig").val(4)//default
+		}
+		currentTimeSig = parseInt($("#timeSig").val(), 10)
 		
+
+
+		//Key sig
+		if (songs[currentSongIndex].keysig){
+			var key = songs[currentSongIndex].keysig
+			originalKey = key
+				destinationKey = key
+			//alert(songs[currentSongIndex].keysig)
+			//If sharp
+
+			//originalKey = songs[currentSongIndex].keysig
+			//Don't want to tranpose yet
+
+			if (key.indexOf("#") != -1){
+				$("#origSharp").prop("checked", true)
+				fillSharpsOrig()
+				$("#origKey").val(key)
+
+				$("#newSharp").prop("checked", true)
+				fillSharpsNew()
+				$("#newKey").val(key)
+
+
+
+
+			}else{//If flat or natural
+				$("#origFlat").prop("checked", true)
+				fillFlatsOrig()
+				$("#origKey").val(key)
+
+				$("#newFlat").prop("checked", true)
+				fillFlatsNew()
+				$("#newKey").val(key)
+			}
+
+		}else{
+			//$('input:radio[name=origRadio]:checked').val("flat")
+			originalKey = "C"
+			destinationKey = "C"
+			$("#origKey").val("C")
+			$("#newKey").val("C")
+		}
+
 
 		// MySQL won't store triangle unicode. Will store it as
 		//question mark
@@ -205,6 +257,8 @@ $(document).ready(function(){
 
 		var triangledContent = songs[currentSongIndex].content.replace(/\?/g, '\u25B2')
 		$("#content").val(triangledContent)
+
+
 
 
 	}
@@ -251,15 +305,12 @@ $(document).ready(function(){
 	sharps[0] = "C"
 	sharps[1] = "C#"
 	sharps[2] = "D"
-	sharps[3] = "D#"
-	sharps[4] = "E"
-	sharps[5] = "F"
-	sharps[6] = "F#"
-	sharps[7] = "G"
-	sharps[8] = "G#"
-	sharps[9] = "A"
-	sharps[10] = "A#"
-	sharps[11] = "B"
+	sharps[3] = "E"
+	sharps[4] = "F"
+	sharps[5] = "F#"
+	sharps[6] = "G"
+	sharps[7] = "A"
+	sharps[8] = "B"
 
 	var flats = new Array();
 	flats[0] = "C"
@@ -409,12 +460,95 @@ $(document).ready(function(){
 
 	})
 
-	$("#musicxml").on("click", function(){
+	$("#musicxml").on("click", function(e){
 		var data = $("#content").val()
-		var url = jsRoutes.controllers.ChordC.musicXML(data).url;
-		location.href = url
+		//var url = jsRoutes.controllers.ChordC.musicXML(data).url;
+
+		e.preventDefault()
+
+		var content = songs[currentSongIndex].content
+		var user_id_current = parseInt(user_id, 10)
+		var composer = songs[currentSongIndex].composer
+		var date = songs[currentSongIndex].date
+		var song_id = songs[currentSongIndex].song_id
+		var title = songs[currentSongIndex].title
+		var timeSig = songs[currentSongIndex].timeSig
+		var keysig = songs[currentSongIndex].keysig
+
+
+		song={content: content, user_id: user_id_current, composer: composer, date: date, song_id: song_id, title: title,
+			timeSig: timeSig, keysig: keysig};
+		songJSON = JSON.stringify(song)
+		//alert(songJSON)
+		//alert(songJSON)
+
+		jsRoutes.controllers.ChordC.musicXML(data, destinationKey).ajax(
+		{
+			success: function(data){
+
+				var url = jsRoutes.controllers.ChordC.downXML(data).url
+				location.href = url
+
+
+
+			},
+			error: function(){
+				alert("error")
+
+			},
+			data: songJSON,
+			contentType: "application/json"
+		}
+		)
+
+		//window.open(url)
+
+		//location.href = url
 
 	})
+
+
+	$("#chords").on("click", function(e){
+		var data = $("#content").val()
+		//var url = jsRoutes.controllers.ChordC.musicXML(data).url;
+
+		e.preventDefault()
+
+		var content = songs[currentSongIndex].content
+		var user_id_current = parseInt(user_id, 10)
+		var composer = songs[currentSongIndex].composer
+		var date = songs[currentSongIndex].date
+		var song_id = songs[currentSongIndex].song_id
+		var title = songs[currentSongIndex].title
+		var timeSig = songs[currentSongIndex].timeSig
+		var keysig = songs[currentSongIndex].keysig
+
+
+		song={content: content, user_id: user_id_current, composer: composer, date: date, song_id: song_id, title: title,
+			timeSig: timeSig, keysig: keysig};
+		songJSON = JSON.stringify(song)
+		//alert(songJSON)
+		//alert(songJSON)
+
+		jsRoutes.controllers.ChordC.chordMidi(data, destinationKey).ajax(
+		{
+			success: function(data){
+
+				$("#chordChart").html(data)
+
+			},
+			error: function(){
+				alert("error")
+
+			},
+			data: songJSON,
+			contentType: "application/json"
+		}
+		)
+
+	})
+
+
 
 		//Diminished/half dimished
 		//Change all 0's to dim
@@ -445,6 +579,11 @@ $(document).ready(function(){
 	$("#timeSig").change(function(){
 		currentTimeSig = parseInt($("#timeSig").val(), 10)
 		renderSong()
+
+	})
+	$("#email").on("click", function(){
+		
+		window.open('mailto:' + email);
 
 	})
 

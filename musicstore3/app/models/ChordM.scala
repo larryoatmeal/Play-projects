@@ -6,10 +6,13 @@ import play.api.Play.current
 import play.api.db.DB
 import play.api.Logger
 import scala.util.matching.Regex
+import scala.xml.Elem
+import chorder._
+
 
 
 //case class Chord(root: String, quality: String)
-case class Song(content: Option[String], user_id: Int, composer: Option[String], date: Option[String], song_id: Option[Int], title: Option[String])
+case class Song(content: Option[String], user_id: Int, composer: Option[String], date: Option[String], song_id: Option[Int], title: Option[String], timeSig: Option[Int], keysig: Option[String])
 //case class Song(bars: List[Bar], user_id: Int)
 /*
 	| * * | * | * * * | * * * * |
@@ -115,7 +118,7 @@ object ChordM{
 					qualityPatternNoB findFirstIn chordS2
 				}else{//If there is a bass
 
-					val qualityPatternB = new Regex("""(?<=""" + root.get + """)[^\n]*(?=""" + bass.get + ")")//everything after root, before bass
+					val qualityPatternB = new Regex("""(?<=""" + root.get + """)[^\n]*(?=""" + "/" + bass.get + ")")//everything after root, before bass. Don't include slash
 					qualityPatternB findFirstIn chordS2
 				}  
 			}else{
@@ -251,12 +254,42 @@ object ChordM{
 	}
 
 
+	def chordMidi(raw: String, destKey: String, song: Song = Song(None, 1, None, None, None, None, None, None)) = {
+
+		val bars = parseTextToBars(raw, song.keysig.getOrElse("C"), destKey)
+		val chords = allChords(bars)
+
+
+		val richChords = chords.map(
+			c => new chorder.Chord(c.chord.raw, c.chord.beat.getOrElse(1), c.measure)
+		)
+
+		val printout = richChords.foldLeft(""){
+			(acc, c) => {
+				acc + c.getRaw + "\n" + "\tRoot: " + c.root +  "\n" + 
+				"\tBass: " + c.bass + "\n" + 
+				"\tKind: " + c.kind + "\n" + 
+				"\tExtensions:" + c.extensions.toList.mkString("",",","") + "\n" + 
+				"\tNotes:" + c.notes.toList.mkString("",",","") + "\n" +
+				"\tMeasure:" + c.getMeasure + "\n" + 
+				"\tBeat:" + c.getBeat + "\n"
+			}
+		}
+
+
+		printout
+		
+
+
+	}
 
 
 
 
-	def musicXML(raw: String, origKey: String = "C", destKey: String = "C", timeSig: Int = 4, song: Song = Song(None, 1, None, None, None, None)) = {
-		val bars = parseTextToBars(raw, origKey, destKey)
+
+	def musicXML(raw: String, destKey: String, song: Song = Song(None, 1, None, None, None, None, None, None)) = {
+
+		val bars = parseTextToBars(raw, song.keysig.getOrElse("C"), destKey)
 
 		// allChords(bars).foreach(
 		// 	c =>
@@ -310,6 +343,53 @@ object ChordM{
 
 			quality match {
 				case Some(q) => {
+					//Right hand valid Finale
+					val finaleMap = Map(
+						"" -> "",
+						"M" -> "",
+						"maj" -> "",
+						"min" -> "m",
+						"m" -> "m",
+						"-" -> "m",
+						"dim" -> "dim",
+						"aug" -> "aug",
+						"+" -> "aug",
+						"maj7" -> "maj7",
+						"?7" -> "maj7",
+						"?" -> "maj7",
+						"M7" -> "maj7",
+						"min7" -> "m7",
+						"m7" -> "m7",
+						"-7" -> "m7",
+						"7" -> "7",
+						"maj9" -> "maj9",
+						"?9" -> "maj9",
+						"M9" -> "maj9",
+						"min9" -> "m9",
+						"m9" -> "m9",
+						"-9" -> "m9",
+						"9" -> "9",
+						"maj11" -> "maj11",
+						"?11" -> "maj11",
+						"M11" -> "maj11",
+						"min11" -> "m11",
+						"m11" -> "m11",
+						"-11" -> "m11",
+						"11" -> "11",
+						"maj13" -> "maj13",
+						"?13" -> "maj13",
+						"M13" -> "maj13",
+						"min13" -> "m13",
+						"m13" -> "m13",
+						"-13" -> "m13",
+						"13" -> "13",
+						"sus2" -> "sus",
+						"sus4" -> "sus",
+						"sus" -> "sus",
+						"sus7" -> "sus"
+					)
+
+
 					q.toLowerCase match {
 						case "" | "maj" => "major"
 						case "m" => "minor"
@@ -335,7 +415,6 @@ object ChordM{
 						case "13" => "dominant-13th"
 						case "maj13" => "major-13th"
 						case "min13" | "m11" => "minor-13th"
-						case _ => "other"
 						case _ => "other"	
 					}
 				}
@@ -344,14 +423,43 @@ object ChordM{
 		}
 
 
+
+
+
+		val xmlKey = destKey match {
+				case "C" => 0
+				case "F" => -1
+				case "Bb" => -2
+				case "Eb" => -3
+				case "Ab" => -4
+				case "Db" => -5
+				case "Gb" => -6
+				case "Cb" => -7
+				case "G" => 1
+				case "D" => 2
+				case "A" => 3
+				case "E" => 4
+				case "B" => 5
+				case "F#" => 6
+				case "C#" => 7
+	 			case _ => 0
+		}
+
+
 		// <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 		// <!DOCTYPE score-partwise PUBLIC
 		// "-//Recordare//DTD MusicXML 3.0 Partwise//EN"
 		// "http://www.musicxml.org/dtds/partwise.dtd">
+
 		<score-partwise version="3.0">
+
+			<movement-title>{song.title.getOrElse("")}</movement-title>
+			<identification>
+				<creator type="composer">{song.composer.getOrElse("")}</creator>
+			</identification>
 			<part-list>
 			<score-part id="P1">
-			<part-name>Part 1</part-name>
+			<part-name></part-name>
 			</score-part>
 			</part-list>
 
@@ -365,10 +473,10 @@ object ChordM{
 							{if (measure == 1)
 								<divisions>1</divisions>
 								<key>
-								<fifths>0</fifths>
+								<fifths>{xmlKey}</fifths>
 								</key>
 								<time>
-								<beats>4</beats>
+								<beats>{song.timeSig.getOrElse(4)}</beats>
 								<beat-type>4</beat-type>
 								</time>
 								<clef>
@@ -376,41 +484,54 @@ object ChordM{
 								<line>2</line>
 								</clef>
 							}
+							{if (measure == 1)
 								<measure-style>
-          							<slash></slash>
+          							<slash type = "start"></slash>
         						</measure-style>
+        					}
 							</attributes>
 						
 						
 
-					{for( i <- 1 to timeSig ) yield {
+					{for( i <- 1 to song.timeSig.getOrElse(4) ) yield {
 
 						val activeChord = chords.find(chord => chord.beat.get == i)//gets first element
 						val rest = activeChord.isEmpty 
 						
 						//Need to indicate somehow that this is first part is part of the xml
 						//Add an outer tag
-						<harmony>
-						{if(!rest) 
-						        <root>
-						          <root-step>{xmlPitch(activeChord.get.root)._1}</root-step>
-						          <root-alter>{xmlPitch(activeChord.get.root)._2}</root-alter>
-						        </root>
-						        <kind halign="center" text="">{xmlKind(activeChord.get.quality)}</kind>
-						        <bass>
-				          			<bass-step>{xmlPitch(activeChord.get.bass)._1}</bass-step>
-				          			<bass-alter>{xmlPitch(activeChord.get.bass)._2}</bass-alter>
-				       		    </bass>
-					    }
-					    </harmony>
-						<note>
-							<pitch>
-								<step>C</step>
-								<octave>4</octave>
-							</pitch>
-							<duration>1</duration>
-							<type>quarter</type>
-						</note>	
+						
+							if (rest) {
+								<note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>	
+							}else{
+								<harmony>
+							        <root>
+							          <root-step>{xmlPitch(activeChord.get.root)._1}</root-step>
+							          <root-alter>{xmlPitch(activeChord.get.root)._2}</root-alter>
+							        </root>
+							        <kind halign="center" text= {activeChord.get.quality.get}>{xmlKind(activeChord.get.quality)}</kind>
+							        {if (!activeChord.get.bass.isEmpty)
+							        <bass>
+					          			<bass-step>{xmlPitch(activeChord.get.bass)._1}</bass-step>
+					          			<bass-alter>{xmlPitch(activeChord.get.bass)._2}</bass-alter>
+					       		    </bass>
+					       			}
+					       	 	</harmony>
+					       	 	<note>
+									<pitch>
+										<step>{xmlPitch(activeChord.get.root)._1}</step>
+										<alter>{xmlPitch(activeChord.get.root)._2}</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+							}							
+
 
 						// else{
 						// 	<note>
@@ -432,6 +553,8 @@ object ChordM{
 		}
 			</part>
 		</score-partwise>
+
+
 
 
 	}
@@ -752,7 +875,7 @@ object ChordM{
 
 			//Interval distance (1, 2, 3, 4, 5, 6, 7, etc)
 			val intervalInt = (doremiMod(currentLetter) - doremiMod(currentKeyLetter) + 7)%7 + 1
-			//Actual distance
+			//Distance from root, measure ascending
 			val midiDistance = (midify(note) - midify(currentKey) + 12)%12
 
 			//Map perfect/major intervals to midi note differences
@@ -765,13 +888,14 @@ object ChordM{
 				6 -> 9,
 				7 -> 11
 			)
-
+			//Logger.debug(note + intervalInt + ":" + midiDistance)
 			val romanExtension = intervalInt match {
 				case 1 | 4 | 5 => { //perfect intervals
 					(midiDistance - intervalMap(intervalInt)) match { //Discrepancy between interval and perfect
 						case 0 => ""
 						case 1 => "#" //Up 1
 						case -1 => "b" //Down 1
+						case _ => "X"
 					}
 				}
 				case 2 | 3 | 6 |7 => {
@@ -780,6 +904,10 @@ object ChordM{
 						case 1 => "#" //Up one
 						case -1 => "b" //Down one
 						case -2 => "bb" //Down two
+						case -11 => "#" //Special case:
+						//For #VII, midiDistance is 0 but intervalMap(intervalInt) is 11
+						//0 -11 = -11
+						case _ => "X"
 					}
 				}
 			}
@@ -866,7 +994,9 @@ object ChordM{
 				row[Option[String]]("composer"),
 				row[Option[String]]("date"),
 				row[Option[Int]]("song_id"),
-				row[Option[String]]("title")
+				row[Option[String]]("title"),
+				row[Option[Int]]("timeSig"),
+				row[Option[String]]("keysig")
 				)
 			).toList(0)
 	}
@@ -886,7 +1016,7 @@ object ChordM{
 		SQL("""
 			UPDATE songs
 			set content = {content}, user_id = {user_id},
-			composer = {composer}, date = {date}, title = {title}
+			composer = {composer}, date = {date}, title = {title}, timeSig = {timeSig}, keysig ={keysig}
 			WHERE song_id = {song_id}
 			""").on(
 			"content" -> song.content,
@@ -894,7 +1024,9 @@ object ChordM{
 			"composer" -> song.composer,
 			"date" -> song.date,
 			"song_id" -> song.song_id,
-			"title" -> song.title
+			"title" -> song.title,
+			"timeSig" -> song.timeSig,
+			"keysig" -> song.keysig
 			).executeUpdate() == 1
 	}
 	def deleteSong(song_id: Int) = DB.withConnection{
@@ -918,7 +1050,9 @@ object ChordM{
 				row[Option[String]]("composer"),
 				row[Option[String]]("date"),
 				row[Option[Int]]("song_id"),
-				row[Option[String]]("title")
+				row[Option[String]]("title"),
+				row[Option[Int]]("timeSig"),
+				row[Option[String]]("keysig")
 				)
 			).toList
 	}

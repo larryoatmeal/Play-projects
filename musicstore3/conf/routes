@@ -53,7 +53,13 @@ PUT     /chords/renderWithOptions   controllers.ChordC.renderWithOptions
 GET     /chords/dummy               controllers.ChordC.dummy
 GET     /chords/download			controllers.ChordC.download(filename: String)
 GET     /chords/writefile           controllers.ChordC.writefile(text: String, fileName: String)
-GET     /chords/musicxml            controllers.ChordC.musicXML(raw: String)
+PUT     /chords/musicxml            controllers.ChordC.musicXML(raw: String, destKey: String)
+GET     /chords/downmusicxml        controllers.ChordC.downXML(filepath: String)
+PUT     /chords/chordmidi           controllers.ChordC.chordMidi(raw: String, destKey: String)
+
+
+GET 	/guitar						controllers.GuitarC.guitar
+
 
 # Javascript routing. MUST BE BEFORE GET /assets/*file
 GET     /assets/javascripts/routes          controllers.Application.javascriptRoutes
