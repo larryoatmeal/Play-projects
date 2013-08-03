@@ -56,7 +56,8 @@ object Definition{
       Ab -> 8,
       A -> 9,
       Bb -> 10,
-      B -> 11
+      B -> 11,
+      NONE -> 0
     )
     octaveMinusOne(note) + (octave+1) * 12 //returns real midi value
   }

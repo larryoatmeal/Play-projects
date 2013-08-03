@@ -102,6 +102,8 @@ object ChordM{
 				case None => chordS
 			}
 
+			//println(chordS2)
+
 
 			//a chord has three parts
 			//[Root][Quality]/[Bass]
@@ -621,6 +623,7 @@ object ChordM{
 					(t, chordNum) => {
 						val chord = bar.chords(chordNum)
 						val beat = chordMap(chordNum)
+						//println(chord.raw)
 						t.replace(beat.toString*longestChord, padWhiteSpace(chord.raw))
 					}
 				}
@@ -634,7 +637,7 @@ object ChordM{
 						t.replace(restNum.toString*longestChord, "/" + " "*(longestChord-1) )// Slash takes up one space
 					}
 				}
-
+				//println(finalBar)
 				finalBar
 			}
 
@@ -973,7 +976,8 @@ object ChordM{
 				}
 			}
 			
-			val newraw = newRootName.getOrElse("") + chord.quality.getOrElse("") + newBassName.getOrElse("") 
+			val newraw = newRootName.getOrElse("") + chord.quality.getOrElse("") + 
+			(if(newBassName.isEmpty){""}else{"/" + newBassName.get})
 
 			Chord(newRootName, newBassName, chord.quality, chord.beat, chord.modifier, newraw)
 		}
