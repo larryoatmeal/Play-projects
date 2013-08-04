@@ -1,0 +1,2476 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE score-partwise PUBLIC "-//Recordare//DTD MusicXML 3.0 Partwise//EN" "http://www.musicxml.org/dtds/partwise.dtd">
+<score-partwise version="3.0">
+
+			<movement-title>Water Service Bureau</movement-title>
+			<identification>
+				<creator type="composer">Megaman</creator>
+			</identification>
+			<part-list>
+			<score-part id="P1">
+			<part-name></part-name>
+			</score-part>
+			</part-list>
+
+			<part id="P1">
+			<measure number="1">
+
+						
+							<attributes>
+							<divisions>1</divisions><key>
+								<fifths>4</fifths>
+								</key><time>
+								<beats>4</beats>
+								<beat-type>4</beat-type>
+								</time><clef>
+								<sign>G</sign>
+								<line>2</line>
+								</clef>
+							<measure-style>
+          							<slash type="start"></slash>
+        						</measure-style>
+							</attributes>
+						
+						
+
+					<note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><harmony>
+							        <root>
+							          <root-step>A</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="">major</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>A</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="2">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>B</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="">major</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>B</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="3">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>C</root-step>
+							          <root-alter>1</root-alter>
+							        </root>
+							        <kind halign="center" text="m">minor</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>C</step>
+										<alter>1</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><harmony>
+							        <root>
+							          <root-step>B</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="">major</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>B</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="4">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>A</root-step>
+							          <root-alter>1</root-alter>
+							        </root>
+							        <kind halign="center" text="m7">minor-seventh</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>A</step>
+										<alter>1</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="5">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>A</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="">major</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>A</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><harmony>
+							        <root>
+							          <root-step>B</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="">major</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>B</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="6">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>C</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="">major</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>C</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><harmony>
+							        <root>
+							          <root-step>D</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="">major</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>D</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="7">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>E</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="">major</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>E</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="8">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>E</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="">major</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>E</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="9">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>E</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="">major</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>E</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="10">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>E</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="7">dominant</kind>
+							        <bass>
+					          			<bass-step>D</bass-step>
+					          			<bass-alter>0</bass-alter>
+					       		    </bass>
+					       	 	</harmony><note>
+									<pitch>
+										<step>E</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="11">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>C</root-step>
+							          <root-alter>1</root-alter>
+							        </root>
+							        <kind halign="center" text="m">minor</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>C</step>
+										<alter>1</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="12">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>C</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="">major</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>C</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><harmony>
+							        <root>
+							          <root-step>D</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="7">dominant</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>D</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="13">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>E</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="">major</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>E</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="14">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>E</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="7">dominant</kind>
+							        <bass>
+					          			<bass-step>D</bass-step>
+					          			<bass-alter>0</bass-alter>
+					       		    </bass>
+					       	 	</harmony><note>
+									<pitch>
+										<step>E</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="15">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>C</root-step>
+							          <root-alter>1</root-alter>
+							        </root>
+							        <kind halign="center" text="m">minor</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>C</step>
+										<alter>1</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="16">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>C</root-step>
+							          <root-alter>1</root-alter>
+							        </root>
+							        <kind halign="center" text="m">minor</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>C</step>
+										<alter>1</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><harmony>
+							        <root>
+							          <root-step>D</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="7">dominant</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>D</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="17">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>E</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="">major</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>E</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="18">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>E</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="7">dominant</kind>
+							        <bass>
+					          			<bass-step>D</bass-step>
+					          			<bass-alter>0</bass-alter>
+					       		    </bass>
+					       	 	</harmony><note>
+									<pitch>
+										<step>E</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="19">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>C</root-step>
+							          <root-alter>1</root-alter>
+							        </root>
+							        <kind halign="center" text="m">minor</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>C</step>
+										<alter>1</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="20">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>C</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="">major</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>C</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><harmony>
+							        <root>
+							          <root-step>D</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="7">dominant</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>D</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="21">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>E</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="">major</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>E</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="22">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>E</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="7">dominant</kind>
+							        <bass>
+					          			<bass-step>D</bass-step>
+					          			<bass-alter>0</bass-alter>
+					       		    </bass>
+					       	 	</harmony><note>
+									<pitch>
+										<step>E</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="23">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>C</root-step>
+							          <root-alter>1</root-alter>
+							        </root>
+							        <kind halign="center" text="m">minor</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>C</step>
+										<alter>1</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="24">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>D</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="7">dominant</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>D</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="25">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>A</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="maj7">major-seventh</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>A</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="26">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>D</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="7">dominant</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>D</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="27">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>C</root-step>
+							          <root-alter>1</root-alter>
+							        </root>
+							        <kind halign="center" text="m">minor</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>C</step>
+										<alter>1</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="28">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>C</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="">major</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>C</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><harmony>
+							        <root>
+							          <root-step>F</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="">major</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>F</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="29">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>D</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="sus7">other</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>D</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="30">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="31">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>E</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="sus7">other</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>E</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="32">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="33">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>A</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="maj7">major-seventh</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>A</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="34">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>G</root-step>
+							          <root-alter>1</root-alter>
+							        </root>
+							        <kind halign="center" text="m7">minor-seventh</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>G</step>
+										<alter>1</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="35">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>F</root-step>
+							          <root-alter>1</root-alter>
+							        </root>
+							        <kind halign="center" text="m7">minor-seventh</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>F</step>
+										<alter>1</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="36">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>B</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="sus">other</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>B</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><harmony>
+							        <root>
+							          <root-step>B</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="7">dominant</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>B</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="37">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>A</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="maj7">major-seventh</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>A</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="38">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>G</root-step>
+							          <root-alter>1</root-alter>
+							        </root>
+							        <kind halign="center" text="m7">minor-seventh</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>G</step>
+										<alter>1</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="39">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>C</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="">major</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>C</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="40">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>D</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="sus7">other</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>D</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="41">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>E</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="maj7">major-seventh</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>E</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="42">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>E</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="7">dominant</kind>
+							        <bass>
+					          			<bass-step>D</bass-step>
+					          			<bass-alter>0</bass-alter>
+					       		    </bass>
+					       	 	</harmony><note>
+									<pitch>
+										<step>E</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="43">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>A</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="">major</kind>
+							        <bass>
+					          			<bass-step>C</bass-step>
+					          			<bass-alter>1</bass-alter>
+					       		    </bass>
+					       	 	</harmony><note>
+									<pitch>
+										<step>A</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="44">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>A</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="m7">minor-seventh</kind>
+							        <bass>
+					          			<bass-step>C</bass-step>
+					          			<bass-alter>0</bass-alter>
+					       		    </bass>
+					       	 	</harmony><note>
+									<pitch>
+										<step>A</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="45">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>E</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="">major</kind>
+							        <bass>
+					          			<bass-step>B</bass-step>
+					          			<bass-alter>0</bass-alter>
+					       		    </bass>
+					       	 	</harmony><note>
+									<pitch>
+										<step>E</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="46">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>F</root-step>
+							          <root-alter>1</root-alter>
+							        </root>
+							        <kind halign="center" text="7">dominant</kind>
+							        <bass>
+					          			<bass-step>A</bass-step>
+					          			<bass-alter>1</bass-alter>
+					       		    </bass>
+					       	 	</harmony><note>
+									<pitch>
+										<step>F</step>
+										<alter>1</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="47">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>A</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="maj7">major-seventh</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>A</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="48">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>B</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="7">dominant</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>B</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="49">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>E</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="maj7">major-seventh</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>E</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="50">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>E</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="7">dominant</kind>
+							        <bass>
+					          			<bass-step>D</bass-step>
+					          			<bass-alter>0</bass-alter>
+					       		    </bass>
+					       	 	</harmony><note>
+									<pitch>
+										<step>E</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="51">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>A</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="">major</kind>
+							        <bass>
+					          			<bass-step>C</bass-step>
+					          			<bass-alter>1</bass-alter>
+					       		    </bass>
+					       	 	</harmony><note>
+									<pitch>
+										<step>A</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="52">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>A</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="m7">minor-seventh</kind>
+							        <bass>
+					          			<bass-step>C</bass-step>
+					          			<bass-alter>0</bass-alter>
+					       		    </bass>
+					       	 	</harmony><note>
+									<pitch>
+										<step>A</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="53">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>E</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="">major</kind>
+							        <bass>
+					          			<bass-step>B</bass-step>
+					          			<bass-alter>0</bass-alter>
+					       		    </bass>
+					       	 	</harmony><note>
+									<pitch>
+										<step>E</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="54">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>F</root-step>
+							          <root-alter>1</root-alter>
+							        </root>
+							        <kind halign="center" text="7">dominant</kind>
+							        <bass>
+					          			<bass-step>A</bass-step>
+					          			<bass-alter>1</bass-alter>
+					       		    </bass>
+					       	 	</harmony><note>
+									<pitch>
+										<step>F</step>
+										<alter>1</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="55">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>A</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="maj7">major-seventh</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>A</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="56">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>B</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="7">dominant</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>B</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="57">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>C</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="">major</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>C</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="58">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>D</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="">major</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>D</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="59">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>E</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="">major</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>E</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure><measure number="60">
+
+						
+							<attributes>
+							
+							
+							</attributes>
+						
+						
+
+					<harmony>
+							        <root>
+							          <root-step>E</root-step>
+							          <root-alter>0</root-alter>
+							        </root>
+							        <kind halign="center" text="">major</kind>
+							        
+					       	 	</harmony><note>
+									<pitch>
+										<step>E</step>
+										<alter>0</alter>
+										<octave>4</octave>
+									</pitch>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note>
+
+					</measure>
+			</part>
+		</score-partwise>

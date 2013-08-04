@@ -1,0 +1,9 @@
+Intro
+|Imaj9    /        /        /        |IV13     /        /        /        |Imaj9    /        /        /        |IV13     /        /        /        |
+
+Verse 1
+|bIIImaj7 /        /        /        |IIm7     /        bII7     /        |Im7      /        IV7      /        |bVII     /        V7       /        |
+|Im7      /        IV7      /        |IIm7     /        Vm7      /        |bVI      /        /        /        |bVII/IV  /        IV7      /        |
+Verse 1
+|bIIImaj7 /        /        /        |IIm7     /        bII7     /        |Im7      /        IV7      /        |bVII     /        V7       /        |
+|Im7      /        IV7      /        |IIm7     /        Vm7      /        |Im7      /        /        /        |IV7      /        /        /        |
