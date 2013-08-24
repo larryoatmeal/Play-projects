@@ -81,8 +81,6 @@ object Chord{
         case Some(b) => { //root and bass
           val suffixPatternB = new Regex(s"""(?<=$r)[^\n]*(?=/$b)""")
           (suffixPatternB findFirstIn chordS).getOrElse(OTHER)
-
-
         }
         case None => { //root, no bass
           val suffixPatternNoB = new Regex(s"""(?<=$r)[^\n]*""")

@@ -33,7 +33,15 @@
 						
 						
 
-					<harmony>
+					<note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><note>
+									<rest></rest>
+									<duration>1</duration>
+									<type>quarter</type>
+								</note><harmony>
 							        <root>
 							          <root-step>E</root-step>
 							          <root-alter>-1</root-alter>
@@ -46,14 +54,6 @@
 										<alter>-1</alter>
 										<octave>4</octave>
 									</pitch>
-									<duration>1</duration>
-									<type>quarter</type>
-								</note><note>
-									<rest></rest>
-									<duration>1</duration>
-									<type>quarter</type>
-								</note><note>
-									<rest></rest>
 									<duration>1</duration>
 									<type>quarter</type>
 								</note><note>

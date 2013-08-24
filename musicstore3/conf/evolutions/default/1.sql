@@ -13,7 +13,7 @@ CREATE TABLE entry (
   entry_id int(11) NOT NULL AUTO_INCREMENT,
   instrument_id int(11) NOT NULL,
   PRIMARY KEY (entry_id)
-) ;
+);
 
 
 

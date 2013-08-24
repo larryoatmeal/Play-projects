@@ -31,8 +31,6 @@ object ChordM{
 	val MusicBar = 1
 	val TextBar = 0
 
-
-
 	private def parseTextToBars(raw: String, origKey: String, destKey: String): List[Bar] = {
 
 		def splitIntoBars(input: String, bars: List[String]): List[String] = {
@@ -284,11 +282,7 @@ object ChordM{
 
 
 	}
-
-
-
-
-
+	
 	def musicXML(raw: String, destKey: String, song: Song = Song(None, 1, None, None, None, None, None, None)) = {
 
 		val bars = parseTextToBars(raw, song.keysig.getOrElse("C"), destKey)
@@ -555,10 +549,6 @@ object ChordM{
 		}
 			</part>
 		</score-partwise>
-
-
-
-
 	}
 
 
